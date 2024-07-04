@@ -1,0 +1,16 @@
+@import url(nightVariables.css);
+
+body{
+    background-color: black;
+    color: white;
+}
+#welcomeMask{
+    background-color: var(--logoBlue);
+}
+#playBox{
+    background-color: var(--logoBlueButton);
+    border-color: white !important;
+}
+#playBox:hover{
+    background-color: var(--logoBlueButtonHover);
+}

@@ -1,0 +1,16 @@
+@import url(dayVariables.css);
+
+body{
+    background-color: white;
+    color: black;
+}
+#welcomeMask{
+    background-color: var(--logoWhite);
+}
+#playBox{
+    background-color: var(--logoWhiteButton);
+    border-color: black !important;
+}
+#playBox:hover{
+    background-color: var(--logoWhiteButtonHover);
+}
