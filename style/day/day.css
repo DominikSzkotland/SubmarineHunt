@@ -14,3 +14,16 @@ body{
 #playBox:hover{
     background-color: var(--logoWhiteButtonHover);
 }
+
+#sky{
+    background-color: var(--sky);
+}
+
+#waves{
+    background-color: var(--sky);
+    background-image: url("../../images/day/waveDay.png");
+}
+
+#ocean{
+    background-color: var(--water);
+}
