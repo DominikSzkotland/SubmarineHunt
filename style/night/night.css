@@ -14,3 +14,18 @@ body{
 #playBox:hover{
     background-color: var(--logoBlueButtonHover);
 }
+
+#sky{
+    background-color: var(--sky);
+}
+#waves{
+
+    background-image: url("../../images/night/wave.png");
+}
+#ocean{
+    background-color: var(--water);
+}
+
+#ship{
+    background-image: url("../../images/night/boatRight.png");
+}
