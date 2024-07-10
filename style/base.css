@@ -45,6 +45,8 @@ body{
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    border-width: 5px;
+    border-style: solid;
 }
 #playButton{
     font-size: 40px;
@@ -93,3 +95,30 @@ body{
     left: 0;
     z-index: 1;
 }   
+.submarine{
+    position: absolute;
+    width: 6%;
+    height: 5%;
+    z-index: 2;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: translateX(-50%); /* pozniej zmieni sie na 100 % (aby ukryc je) jednakze chcialem pokazac rozmieszczenie */
+}
+#submarine1{
+    bottom: 0;
+}
+#submarine2{
+    bottom: 10%;
+}
+#submarine3{
+    bottom: 20%;
+}
+#submarine4{
+    bottom: 30%;
+}
+#submarine5{
+    bottom: 40%;
+}
+#submarine6{
+    bottom: 50%;
+}
