@@ -28,5 +28,7 @@ body{
 
 #ship{
    background-image: url("../../images/day/boatRight.png");
-
+}
+.submarine{
+    background-image: url("../../images/day/submarineRight.png");
 }
