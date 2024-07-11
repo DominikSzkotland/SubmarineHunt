@@ -14,7 +14,6 @@ body{
 #playBox:hover{
     background-color: var(--logoBlueButtonHover);
 }
-
 #sky{
     background-color: var(--sky);
 }
@@ -25,7 +24,6 @@ body{
 #ocean{
     background-color: var(--water);
 }
-
 #ship{
     background-image: url("../../images/night/boatRight.png");
 }
