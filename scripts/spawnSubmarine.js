@@ -13,7 +13,6 @@ const spawnSubmarine = () => {
         submarine.style.left = '100%';
         submarine.setAttribute('data-turn', 'right');
     }
-
     submarine.style.top = Math.random() * 100 + '%';
     adjustAltitude(submarine);
     return submarine;
