@@ -18,9 +18,4 @@ const autoSwitchTheme = () => {
         setNightTheme();
     }
 }
-autoSwitchTheme();
-
-const Play = () => {
-    document.getElementById('welcomeMask').classList.add('hide');
-}
-document.getElementById('playButton').onclick = Play;
+export default autoSwitchTheme
