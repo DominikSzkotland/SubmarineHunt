@@ -5,10 +5,14 @@ const spawnSubmarine = () => {
     document.getElementById('ocean').appendChild(submarine);
     if(leftOrRight === 0) {
         submarine.style.left = 'auto';
-        submarine.style.right = '0';}
+        submarine.style.right = '100%';
+        submarine.setAttribute('data-turn', 'left');
+    }
     else{
         submarine.style.right = 'auto';
-        submarine.style.left = '0';}
+        submarine.style.left = '100%';
+        submarine.setAttribute('data-turn', 'right');
+    }
     submarine.style.top = Math.random() * 100 + '%';
     adjustAltitude(submarine);
     return submarine;
