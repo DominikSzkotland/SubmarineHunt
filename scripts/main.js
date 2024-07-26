@@ -1,12 +1,14 @@
 import autoSwitchTheme from "./themeChanger.js";
-import spawnSubmarine from "./spawnSubmarine.js";
+import spawn from "./spawnSubmarine.js";
 import moveSubmarine from "./moveSubmarine.js";
 import adjustSize from "./sizeAdjuster.js";
+
+const submarineTemplate = {'elementType':'submarine', 'styleClass':'submarine'}
 
 const spawnedSubmarines = [];
 autoSwitchTheme();
 document.getElementById('spawnSubmarineTemporaryButton').addEventListener('click', () => {
-    spawnedSubmarines.push(spawnSubmarine());
+    spawnedSubmarines.push(spawn(submarineTemplate));
 });
 document.getElementById('moveSubmarinesTemporaryButton').addEventListener('click', () => {
     spawnedSubmarines.forEach((submarine) => {
