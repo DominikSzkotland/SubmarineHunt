@@ -1,5 +1,5 @@
 import autoSwitchTheme from "./themeChanger.js";
-import spawn from "./spawnSubmarine.js";
+import spawn from "./spawn.js";
 import moveSubmarine from "./moveSubmarine.js";
 import adjustSize from "./sizeAdjuster.js";
 
