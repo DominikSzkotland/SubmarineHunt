@@ -106,18 +106,17 @@ html,body{
 #leftClick{
     position: absolute;
     height: 100%;
-    width: 33%;
-    float: left;
+    width: 22%;
+    left: 0;
     z-index: 8;
     border: 2px solid yellow;
 }
 
 #placeBomb{
     position: absolute;
-    display: flex;
     height: 100%;
-    width: 34%;
-    margin-left: 33%;
+    width: 56%;
+    left: 22%;
     z-index: 8;
     border: 2px solid blue;
 }
@@ -125,8 +124,8 @@ html,body{
 #rightClick{
     position: absolute;
     height: 100%;
-    width: 33%;
-    right: 0;
+    width: 22%;
+    left: 78%;
     z-index: 8;
     border: 2px solid red;
 }
