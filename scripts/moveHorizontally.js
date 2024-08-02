@@ -1,6 +1,5 @@
 const ocean = document.getElementById('ocean');
 const moveHorizontally = (elementToMove, moveSpeed) => {
-    console.log(moveSpeed);
     if (elementToMove.getAttribute('data-moving') === 'true') {
         return;
     }
@@ -16,7 +15,6 @@ const moveHorizontally = (elementToMove, moveSpeed) => {
 }
 
 const moveTowardsRightSide = (elementToMove, moveSpeed) => {
-    console.log(moveSpeed);
     elementToMove.style.right = `${parseFloat(elementToMove.style.right) - moveSpeed}%`;
     if(elementToMove.offsetLeft < ocean.offsetWidth){
         requestAnimationFrame(() => moveTowardsRightSide(elementToMove, moveSpeed));
@@ -27,7 +25,6 @@ const moveTowardsRightSide = (elementToMove, moveSpeed) => {
 }
 
 const moveTowardsLeftSide = (elementToMove, moveSpeed) => {
-    console.log(moveSpeed);
     elementToMove.style.left = `${parseFloat(elementToMove.style.left) - moveSpeed}%`;
     if(elementToMove.offsetLeft + elementToMove.offsetWidth > 0){
         requestAnimationFrame(() => moveTowardsLeftSide(elementToMove, moveSpeed));
