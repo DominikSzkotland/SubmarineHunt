@@ -3,6 +3,16 @@ import spawn from "./spawn.js";
 import moveHorizontally from "./moveHorizontally.js";
 import adjustSize from "./sizeAdjuster.js";
 
+function isTouchDevice() {
+    return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+}
+
+if (isTouchDevice()) {
+    console.log("Urządzenie obsługuje ekran dotykowy.");
+} else {
+    console.log("Urządzenie nie obsługuje ekranu dotykowego.");
+}
+
 const submarineTemplate = {'elementType':'submarine', 'styleClass':'submarine'}
 
 const spawnedSubmarines = [];
