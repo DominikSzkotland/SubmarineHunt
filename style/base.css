@@ -75,6 +75,7 @@ html,body{
     position: absolute;
 }
 #ship{
+    width: 28%;
     height: 50%;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -83,6 +84,7 @@ html,body{
     left: 0;
     z-index: 1;
 }   
+
 #spawnSubmarineTemporaryButton{
     position: fixed;
     top: 20px; 
@@ -90,6 +92,7 @@ html,body{
     padding: 20px;
     font-size: larger;
 }
+
 #moveSubmarinesTemporaryButton{
     position: fixed;
     top: 20px; 
@@ -97,28 +100,40 @@ html,body{
     padding: 20px;
     font-size: larger;
 }
-#leftButton{
-    position: absolute;
-    height: 100%;
-    width: 22%;
-    left: 0;
-    z-index: -8;
-    border: 2px solid yellow;
-}
-#actionButton{
-    position: absolute;
-    height: 100%;
-    width: 56%;
-    left: 22%;
-    z-index: -8;
-    border: 2px solid blue;
-}
-#rightButton{
-    position: absolute;
-    height: 100%;
-    width: 22%;
-    left: 78%;
-    z-index: -8;
-    border: 2px solid red;
+
+#spawnBombTemporaryButton{
+    position: fixed;
+    top: 20px; 
+    left: 500px;
+    padding: 20px;
+    font-size: larger;
 }
 
+#leftClick{
+    position: absolute;
+    height: 100%;
+    width: 33%;
+    float: left;
+    z-index: 8;
+}
+
+#placeBomb{
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 34%;
+    margin-left: 33%;
+    z-index: 8;
+}
+
+#rightClick{
+    position: absolute;
+    height: 100%;
+    width: 33%;
+    right: 0;
+    z-index: 8;
+}
+
+#spawnSubmarineTemporaryButton, #moveSubmarinesTemporaryButton, #spawnBombTemporaryButton{
+    z-index: 9;
+}
