@@ -19,7 +19,11 @@ const detectAndAdjustSize = (element) => {
             break;
         case 'bomb':
             const bomb = element;
-            bomb.style.width = Math.floor(1.8 * bomb.offsetHeight) + 'px';
+            bomb.style.width = Math.floor(1 * bomb.offsetHeight) + 'px';
+            break;
+        case 'ship':
+            const ship = element;
+            ship.style.width = Math.floor(2.5 * ship.offsetHeight) + 'px';
             break;
         case 'powerUp':
             break;
