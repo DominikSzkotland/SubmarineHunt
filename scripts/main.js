@@ -17,6 +17,16 @@ if (isTouchDevice()) {
     console.log("Urządzenie nie obsługuje ekranu dotykowego.");
 }
 
+function isTouchDevice() {
+    return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+}
+
+if (isTouchDevice()) {
+    console.log("Urządzenie obsługuje ekran dotykowy.");
+} else {
+    console.log("Urządzenie nie obsługuje ekranu dotykowego.");
+}
+
 const submarineTemplate = {'elementType':'submarine', 'styleClass':'submarine'}
 const bombTemplate = {'elementType':'bomb', 'styleClass':'bomb'}
 
