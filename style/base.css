@@ -100,25 +100,21 @@ html,body{
 #leftButton{
     position: absolute;
     height: 100%;
+    z-index: 8;
     width: 22%;
     left: 0;
-    z-index: -8;
-    border: 2px solid yellow;
 }
 #actionButton{
     position: absolute;
     height: 100%;
+    z-index: 8;
     width: 56%;
     left: 22%;
-    z-index: -8;
-    border: 2px solid blue;
 }
 #rightButton{
     position: absolute;
     height: 100%;
+    z-index: 8;
     width: 22%;
     left: 78%;
-    z-index: -8;
-    border: 2px solid red;
 }
-
