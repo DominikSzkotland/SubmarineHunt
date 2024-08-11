@@ -7,7 +7,7 @@ const spawnUnderShip = (TemplateOfElementToSpawn = {'elementType':undefined, 'st
     elementToSpawn.setAttribute('data-elementType', TemplateOfElementToSpawn.elementType);
     sizeAdjuster(elementToSpawn);
     elementToSpawn.style.top = 0;
-    elementToSpawn.style.left = `${shipElement.offsetLeft + (shipElement.offsetWidth / 2)}px`;
+    elementToSpawn.style.left = `${shipElement.offsetLeft + (shipElement.offsetWidth / 2) - (elementToSpawn.offsetWidth / 2)}px`;
     return elementToSpawn;
 }
 

@@ -17,3 +17,9 @@
     background-size: 100% 100%;
     background-color: red;
 }
+
+.mobileSterringButtons{
+    position: fixed;
+    height: 100%;
+    z-index: 8;
+}

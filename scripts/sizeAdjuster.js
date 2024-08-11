@@ -25,8 +25,6 @@ const detectAndAdjustSize = (element) => {
             const ship = element;
             ship.style.width = Math.floor(2.5 * ship.offsetHeight) + 'px';
             break;
-        case 'powerUp':
-            break;
         default:
             console.error('You are trying to adjust an undefined element!');
             break;

@@ -75,7 +75,6 @@ html,body{
     position: absolute;
 }
 #ship{
-    width: 28%;
     height: 50%;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -112,27 +111,17 @@ html,body{
     z-index: 9;
 }
 
-#leftClick{
-    position: absolute;
-    height: 100%;
-    z-index: 8;
+#leftButton{
     width: 22%;
     left: 0;
 }
 
-#placeBomb{
-    position: absolute;
-    display: flex;
-    height: 100%;
-    z-index: 8;
+#actionButton{
     width: 56%;
     left: 22%;
 }
 
-#rightClick{
-    position: absolute;
-    height: 100%;
-    z-index: 8;
+#rightButton{
     width: 22%;
     left: 78%;
 }
