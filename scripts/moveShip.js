@@ -30,10 +30,20 @@ const moveShipTowardsLeft = (moveSpeed) => {
         rideLeftAnimationID = requestAnimationFrame(() => moveShipTowardsLeft(moveSpeed));
     };
 }
-const stopMovingShip = () => {
+const stopMovingShip = (direction) => {
+    if (direction === 'left') {
+        stopMovingShipTowardsLeft();
+    }
+    else{
+        stopMovingShipTowardsRight();
+    } 
+}
+const stopMovingShipTowardsRight = () => {
     cancelAnimationFrame(rideRightAnimationID);
-    cancelAnimationFrame(rideLeftAnimationID);
     rideRightAnimationID = null;
+}
+const stopMovingShipTowardsLeft = () => {
+    cancelAnimationFrame(rideLeftAnimationID);
     rideLeftAnimationID = null;
 }
 export {moveShip, stopMovingShip};
