@@ -8,10 +8,9 @@ const spawnUnderShip = (TemplateOfElementToSpawn = {'elementType':undefined, 'st
     elementToSpawn.setAttribute('data-elementType', TemplateOfElementToSpawn.elementType);
     sizeAdjuster(elementToSpawn);
     elementToSpawn.style.top = 0;
-    const shipLeftRelativeToOcean = shipElement.offsetLeft - oceanElement.offsetLeft;
-    const leftPercent = ((shipLeftRelativeToOcean + (shipElement.offsetWidth / 2)) / oceanElement.offsetWidth) * 100;
-    elementToSpawn.style.left = `${leftPercent}%`;
-
+    const shipMiddle = shipElement.offsetLeft + (shipElement.offsetWidth / 2) - (elementToSpawn.offsetWidth / 2)
+    const skyWidth = document.getElementById('sky').offsetWidth;
+    elementToSpawn.style.left = `${(shipMiddle / skyWidth) * 100}%`
     return elementToSpawn;
 }
 
