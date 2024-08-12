@@ -20,8 +20,8 @@ const updateKeyBindings = () => {
     };
 
     keyBindings = {
-        [keyForMoveLeft]: { press: () => moveShip('left', 0.4), release: () => stopMovingShip() },
-        [keyForMoveRight]: { press: () => moveShip('right', 0.4), release: () => stopMovingShip() }
+        [keyForMoveLeft]: { press: () => moveShip('left', 0.4), release: () => stopMovingShip('left') },
+        [keyForMoveRight]: { press: () => moveShip('right', 0.4), release: () => stopMovingShip('right') }
     };
 };
 
