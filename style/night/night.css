@@ -30,3 +30,6 @@ body{
 .submarine{
     background-image: url("../../images/night/submarineRight.png");
 }
+.bomb{
+    background-image: url("../../images/night/bomb.png");
+}

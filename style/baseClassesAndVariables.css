@@ -11,11 +11,10 @@
 
 .bomb{
     position: absolute;
-    height: 5%;
+    height: 6%;
     z-index: 2;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    background-color: red;
 }
 
 .mobileSterringButtons{

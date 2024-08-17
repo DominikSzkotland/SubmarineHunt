@@ -7,6 +7,7 @@ const moveShip = (direction, moveSpeed) => {
         stopMovingShip();
     }
     if (direction === 'left') {
+        
         rideLeftAnimationID = requestAnimationFrame(() => moveShipTowardsLeft(moveSpeed));
     }
     else if (direction === 'right') {
@@ -19,6 +20,7 @@ const moveShip = (direction, moveSpeed) => {
 const moveShipTowardsRight = (moveSpeed) => {
     if(ship.offsetLeft + ship.offsetWidth < sky.offsetWidth) {
         const currentLeftPercent = parseFloat(ship.style.left) || 0;
+        ship.style.transform = 'scaleX(1)';
         ship.style.left = `${currentLeftPercent + moveSpeed}%`;
         rideRightAnimationID = requestAnimationFrame(() => moveShipTowardsRight(moveSpeed));
     }
@@ -26,6 +28,7 @@ const moveShipTowardsRight = (moveSpeed) => {
 const moveShipTowardsLeft = (moveSpeed) => {
     if(ship.offsetLeft > 0) {
         const currentLeftPercent = parseFloat(ship.style.left) || 0;
+        ship.style.transform = 'scaleX(-1)';
         ship.style.left = `${currentLeftPercent - moveSpeed}%`;
         rideLeftAnimationID = requestAnimationFrame(() => moveShipTowardsLeft(moveSpeed));
     };

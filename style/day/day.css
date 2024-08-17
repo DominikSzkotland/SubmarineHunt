@@ -29,3 +29,6 @@ body{
 .submarine{
     background-image: url("../../images/day/submarineRight.png");
 }
+.bomb{
+    background-image: url("../../images/day/bomb.png");
+}
