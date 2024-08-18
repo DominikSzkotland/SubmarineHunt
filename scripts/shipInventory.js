@@ -1,16 +1,12 @@
 import spawnUnderShip from './spawnUnderShip.js';
 import {bombTemplate, spawnedBombs} from './elementsTemplates.js';
 import fall from './InventoryElementsSpecialActions/bombFall.js';
-function getInventoryItem(index) {
-  return shipInventory[shipInventoryKeys[index]];
-}
-
 const switchToNextItem = () => {
   shipInventoryIndex++;
   if (shipInventoryIndex > shipInventoryKeys.length - 1) {
     shipInventoryIndex = 0;
   }
-  shipActiveItem = shipInventoryKeys[shipInventoryIndex];
+  shipActiveItem = getInventoryItem(shipInventoryIndex);
   return shipActiveItem;
 };
 
@@ -19,48 +15,42 @@ const addItemToInventory = (item) => {
 };
 
 const removeActiveItem = () => {
-  const {shipActiveItem, ...rest} = shipInventory;
-  shipInventory = rest;
+  shipInventory = shipInventory.slice(shipInventoryIndex, 1);
   shipInventoryIndex--;
   if (shipInventoryIndex < 0) {
-    shipInventoryIndex = shipInventoryKeys.length - 1;
+    shipInventoryIndex = shipInventory.length - 1;
   }
-  shipActiveItem = getInventoryItem(shipInventoryIndex);
+  shipActiveItem = shipInventory[shipInventoryIndex];
   return shipActiveItem;
 };
 
 const useActiveItem = () => {
-  shipActiveItem.count--;
-  shipActiveItem.action();
-  if (shipActiveItem <= 0 && shipActiveItem !== 'bomb') {
-    removeItemFromInventory();
+  if (shipActiveItem.count <= 0 && shipActiveItem.name !== 'bomb') {
+    removeActiveItem();
+  } else if (shipActiveItem.count <= 0 && shipActiveItem.name === 'bomb') {
+    return;
+  } else {
+    shipActiveItem.action();
+    shipActiveItem.count--;
   }
 };
-
+let shipInventory = [];
+let shipInventoryIndex = 0;
+let shipActiveItem = shipInventory[shipInventoryIndex];
 const resetInventory = () => {
-  shipInventory = {
-    bomb: {
+  shipInventory = [
+    {
+      name: 'bomb',
       count: 3,
       action: () => {
-        spawnUnderShip(bombTemplate);
+        spawnedBombs.push(spawnUnderShip(bombTemplate));
         fall(spawnedBombs, 0.5);
       },
     },
-  };
+  ];
   shipInventoryIndex = 0;
-  shipActiveItem = getInventoryItem(shipInventoryIndex);
+  shipActiveItem = shipInventory[shipInventoryIndex];
 };
-let shipInventory = {
-  bomb: {
-    count: 3,
-    action: () => {
-      spawnedBombs.push(spawnUnderShip(bombTemplate));
-      fall(spawnedBombs, 0.5);
-    },
-  },
-};
-let shipInventoryIndex = 0;
-const shipInventoryKeys = Object.keys(shipInventory);
-let shipActiveItem = getInventoryItem(shipInventoryIndex);
+resetInventory();
 
-export {switchToNextItem, addItemToInventory, removeActiveItem, useActiveItem, resetInventory};
+export {useActiveItem, shipInventory};

@@ -2,11 +2,9 @@ import autoSwitchTheme from './themeChanger.js';
 import spawnOffScreen from './spawnOffScreen.js';
 import moveHorizontally from './moveHorizontally.js';
 import adjustSize from './sizeAdjuster.js';
-import spawnUnderShip from './spawnUnderShip.js';
 import updateClickState from './keyboardClickHandling.js';
 import isTouchDevice from './touchDeviceDetection.js';
-import {submarineTemplate, bombTemplate, spawnedSubmarines, spawnedBombs} from './elementsTemplates.js';
-
+import {submarineTemplate, spawnedSubmarines, spawnedBombs} from './elementsTemplates.js';
 if (!isTouchDevice()) {
   const mobileSterringButtons = document.getElementsByClassName('mobileSterringButtons');
   const mobileSterringButtonsArray = Array.from(mobileSterringButtons);
@@ -14,7 +12,6 @@ if (!isTouchDevice()) {
     element.remove();
   });
 }
-
 autoSwitchTheme();
 document.getElementById('spawnSubmarineTemporaryButton').addEventListener('click', () => {
   spawnedSubmarines.push(spawnOffScreen(submarineTemplate));
@@ -24,12 +21,6 @@ document.getElementById('moveSubmarinesTemporaryButton').addEventListener('click
     moveHorizontally(submarine, 0.3);
   });
 });
-
-document.getElementById('spawnBombTemporaryButton').addEventListener('click', () => {
-  spawnedBombs.push(spawnUnderShip(bombTemplate));
-  console.log(spawnedBombs);
-});
-
 const Play = () => {
   document.getElementById('playButton').removeEventListener('click', Play);
   document.getElementById('welcomeMask').classList.add('hide');
@@ -45,7 +36,6 @@ window.addEventListener('resize', () => {
 window.addEventListener('keydown', (event) => {
   updateClickState(event.code, true);
 });
-
 window.addEventListener('keyup', (event) => {
   updateClickState(event.code, false);
 });
