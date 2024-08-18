@@ -1,7 +1,7 @@
 import {switchToNextItem, addItemToInventory, removeActiveItem, useActiveItem, resetInventory} from './shipInventory.js';
 
 const performShipAction = () => {
-    useActiveItem();
-}
+  useActiveItem();
+};
 
-export default performShipAction
+export default performShipAction;

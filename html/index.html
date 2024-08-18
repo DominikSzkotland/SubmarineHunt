@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Game about hunting submarines. In which you have to drop bombs on flowing underwater various submarines.">
-    <link rel="shortcut icon" href="../images/day/logo.jpeg" type="image/x-icon" id="themeShortcutIcon">
-    <link rel="stylesheet" href="../style/base.css">
-    <link rel="stylesheet" href="../style/day/day.css" id="themeStylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Game about hunting submarines. In which you have to drop bombs on flowing underwater various submarines." />
+    <link rel="shortcut icon" href="../images/day/logo.jpeg" type="image/x-icon" id="themeShortcutIcon" />
+    <link rel="stylesheet" href="../style/base.css" />
+    <link rel="stylesheet" href="../style/day/day.css" id="themeStylesheet" />
     <title>Submarine Hunt</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="leftButton" class="mobileSterringButtons"></div>
     <div id="actionButton" class="mobileSterringButtons"></div>
     <div id="rightButton" class="mobileSterringButtons"></div>
     <div id="welcomeMask">
-        <div id="centerMenu">
-            <img src="../images/day/logo.jpeg" alt="logo" id="welcomeLogo">
-            <div id="playBox">
-                <div id="playButton">Play</div>
-            </div>
+      <div id="centerMenu">
+        <img src="../images/day/logo.jpeg" alt="logo" id="welcomeLogo" />
+        <div id="playBox">
+          <div id="playButton">Play</div>
         </div>
+      </div>
     </div>
     <div id="sky">
-        <button id="spawnSubmarineTemporaryButton" type="button">Spawn Submarine</button>
-        <button id="moveSubmarinesTemporaryButton" type="button">move Submarines</button>
-        <button id="spawnBombTemporaryButton" type="button">spawn bomb</button>
-        <div id="ship" data-elementType="ship"></div>
+      <button id="spawnSubmarineTemporaryButton" type="button">Spawn Submarine</button>
+      <button id="moveSubmarinesTemporaryButton" type="button">move Submarines</button>
+      <button id="spawnBombTemporaryButton" type="button">spawn bomb</button>
+      <div id="ship" data-elementType="ship"></div>
     </div>
     <div id="waves"></div>
     <div id="ocean"></div>
-</body>
+  </body>
 </html>
 <script src="../scripts/main.js" type="module"></script>
