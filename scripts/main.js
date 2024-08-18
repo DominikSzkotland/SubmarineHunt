@@ -5,7 +5,7 @@ import adjustSize from "./sizeAdjuster.js";
 import spawnUnderShip from "./spawnUnderShip.js";
 import updateClickState from "./keyboardClickHandling.js";
 import isTouchDevice from "./touchDeviceDetection.js";
-
+import {submarineTemplate, bombTemplate, spawnedSubmarines, spawnedBombs} from "./elementsTemplates.js";
 
 if (!isTouchDevice()) {
     const mobileSterringButtons = document.getElementsByClassName('mobileSterringButtons');
@@ -15,11 +15,7 @@ if (!isTouchDevice()) {
     })
 }
 
-const submarineTemplate = {'elementType':'submarine', 'styleClass':'submarine'}
-const bombTemplate = {'elementType':'bomb', 'styleClass':'bomb'}
 
-const spawnedSubmarines = [];
-const spawnedBombs = [];
 autoSwitchTheme();
 document.getElementById('spawnSubmarineTemporaryButton').addEventListener('click', () => {
     spawnedSubmarines.push(spawn(submarineTemplate));
@@ -32,6 +28,7 @@ document.getElementById('moveSubmarinesTemporaryButton').addEventListener('click
 
 document.getElementById('spawnBombTemporaryButton').addEventListener('click', () => {
     spawnedBombs.push(spawnUnderShip(bombTemplate));
+    console.log(spawnedBombs);
 })
 
 const Play = () => {
