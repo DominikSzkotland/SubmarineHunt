@@ -1,5 +1,5 @@
 import sizeAdjuster from './sizeAdjuster.js';
-const spawn = (TemplateOfElementToSpawn = {elementType: undefined, styleClass: undefined}) => {
+const spawnOffScreen = (TemplateOfElementToSpawn = {elementType: undefined, styleClass: undefined}) => {
   const elementToSpawn = document.createElement('div');
   document.getElementById('ocean').appendChild(elementToSpawn);
   elementToSpawn.classList.add(TemplateOfElementToSpawn.styleClass);
@@ -31,4 +31,4 @@ const adjustAltitude = (elementToSpawn) => {
   }
 };
 
-export default spawn;
+export default spawnOffScreen;

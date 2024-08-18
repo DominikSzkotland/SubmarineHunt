@@ -1,5 +1,6 @@
 import spawnUnderShip from './spawnUnderShip.js';
 import {bombTemplate, spawnedBombs} from './elementsTemplates.js';
+import fall from './InventoryElementsSpecialActions/bombFall.js';
 function getInventoryItem(index) {
   return shipInventory[shipInventoryKeys[index]];
 }
@@ -42,6 +43,7 @@ const resetInventory = () => {
       count: 3,
       action: () => {
         spawnUnderShip(bombTemplate);
+        fall(spawnedBombs, 0.5);
       },
     },
   };
@@ -53,6 +55,7 @@ let shipInventory = {
     count: 3,
     action: () => {
       spawnedBombs.push(spawnUnderShip(bombTemplate));
+      fall(spawnedBombs, 0.5);
     },
   },
 };

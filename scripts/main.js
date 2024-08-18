@@ -1,5 +1,5 @@
 import autoSwitchTheme from './themeChanger.js';
-import spawn from './spawn.js';
+import spawnOffScreen from './spawnOffScreen.js';
 import moveHorizontally from './moveHorizontally.js';
 import adjustSize from './sizeAdjuster.js';
 import spawnUnderShip from './spawnUnderShip.js';
@@ -17,7 +17,7 @@ if (!isTouchDevice()) {
 
 autoSwitchTheme();
 document.getElementById('spawnSubmarineTemporaryButton').addEventListener('click', () => {
-  spawnedSubmarines.push(spawn(submarineTemplate));
+  spawnedSubmarines.push(spawnOffScreen(submarineTemplate));
 });
 document.getElementById('moveSubmarinesTemporaryButton').addEventListener('click', () => {
   spawnedSubmarines.forEach((submarine) => {
