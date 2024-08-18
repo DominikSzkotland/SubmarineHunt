@@ -13,6 +13,9 @@ const detectAndAdjustSize = (element) => {
   switch (element.getAttribute('data-elementType')) {
     case 'submarine':
       const submarine = element;
+      if (submarine.getAttribute('data-turn') === 'right') {
+        submarine.style.transform = 'scaleX(-1)';
+      }
       submarine.style.width = Math.floor(1.8 * submarine.offsetHeight) + 'px';
       break;
     case 'bomb':

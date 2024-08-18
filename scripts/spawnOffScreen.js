@@ -4,9 +4,7 @@ const spawnOffScreen = (TemplateOfElementToSpawn = {elementType: undefined, styl
   document.getElementById('ocean').appendChild(elementToSpawn);
   elementToSpawn.classList.add(TemplateOfElementToSpawn.styleClass);
   elementToSpawn.setAttribute('data-elementType', TemplateOfElementToSpawn.elementType);
-  sizeAdjuster(elementToSpawn);
   const leftOrRight = Math.random() < 0.5 ? 0 : 1;
-
   if (leftOrRight === 0) {
     elementToSpawn.style.left = 'auto';
     elementToSpawn.style.right = '100%';
@@ -17,10 +15,10 @@ const spawnOffScreen = (TemplateOfElementToSpawn = {elementType: undefined, styl
     elementToSpawn.setAttribute('data-turn', 'right');
   }
   elementToSpawn.style.top = Math.random() * 100 + '%';
+  sizeAdjuster(elementToSpawn);
   adjustAltitude(elementToSpawn);
   return elementToSpawn;
 };
-
 const adjustAltitude = (elementToSpawn) => {
   const oceanHeight = document.getElementById('ocean').offsetHeight;
   const elementToSpawnAltitude = elementToSpawn.offsetTop;
@@ -30,5 +28,4 @@ const adjustAltitude = (elementToSpawn) => {
     elementToSpawn.style.bottom = '0';
   }
 };
-
 export default spawnOffScreen;
