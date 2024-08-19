@@ -25,9 +25,9 @@ const removeActiveItem = () => {
 };
 
 const useActiveItem = () => {
-  if (shipActiveItem.count <= 0 && shipActiveItem.name !== 'bomb') {
+  if (shipActiveItem.count <= 0 && !shipActiveItem.infinite) {
     removeActiveItem();
-  } else if (shipActiveItem.count <= 0 && shipActiveItem.name === 'bomb') {
+  } else if (shipActiveItem.count <= 0 && shipActiveItem.infinite) {
     return;
   } else {
     shipActiveItem.action();
