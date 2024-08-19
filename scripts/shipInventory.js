@@ -46,6 +46,7 @@ const resetInventory = () => {
         spawnedBombs.push(spawnUnderShip(bombTemplate));
         fall(spawnedBombs, 0.5);
       },
+      infinite: true,
     },
   ];
   shipInventoryIndex = 0;
