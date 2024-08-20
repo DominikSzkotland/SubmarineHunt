@@ -1,127 +1,128 @@
 @import url(baseClassesAndVariables.css);
 
-*{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    overflow: hidden;
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow: hidden;
 }
-html,body{
-    width: 100%;
-    height: 100%;
-    margin: 0;
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
-#welcomeMask{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
+#welcomeMask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
 }
-#centerMenu{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#centerMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-#welcomeLogo{
-    width: 45%;
-    height: 45%;
-    border-radius: 10px;
-    -webkit-user-select: none;
-    -webkit-user-drag: none;
-    user-select: none;
+#welcomeLogo {
+  width: 45%;
+  height: 45%;
+  border-radius: 10px;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  user-select: none;
 }
-#playBox{
-    width: 30%;
-    height: 20%;
-    margin-top: 10px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border-width: 5px;
-    border-style: solid;
+#playBox {
+  width: 30%;
+  height: 20%;
+  margin-top: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-width: 5px;
+  border-style: solid;
 }
-#playButton{
-    font-size: 40px;
-    padding: 7px;
-    font-weight: 600;
-    -webkit-user-select: none;
-    -webkit-user-drag: none;
-    user-select: none;
+#playButton {
+  font-size: 40px;
+  padding: 7px;
+  font-weight: 600;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  user-select: none;
 }
-#sky{
-    width: 100%;
-    height: 22%;
-    position: absolute;
+#sky {
+  width: 100%;
+  height: 22%;
+  position: absolute;
 }
-#waves{
-    width: 100%;
-    height: 4%;
-    top: 20%;
-    background-repeat: repeat-x;
-    position: absolute;
-    z-index: 2;
-    background-size: auto 100%;
+#waves {
+  width: 100%;
+  height: 4%;
+  top: 20%;
+  background-repeat: repeat-x;
+  position: absolute;
+  z-index: 2;
+  background-size: auto 100%;
 }
-#ocean{
-    width: 100%;
-    height: 78%;
-    bottom: 0;
-    position: absolute;
+#ocean {
+  width: 100%;
+  height: 78%;
+  bottom: 0;
+  position: absolute;
 }
-#ship{
-    height: 50%;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    position: absolute;
-    bottom: 0%;
-    left: 0;
-    z-index: 1;
-}   
-
-#spawnSubmarineTemporaryButton{
-    position: fixed;
-    top: 20px; 
-    left: 20px;
-    padding: 20px;
-    font-size: larger;
-    z-index: 9;
+#ship {
+  height: 50%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  bottom: 0%;
+  left: 0;
+  z-index: 1;
 }
 
-#moveSubmarinesTemporaryButton{
-    position: fixed;
-    top: 20px; 
-    left: 250px;
-    padding: 20px;
-    font-size: larger;
-    z-index: 9;
+#spawnSubmarineTemporaryButton {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 20px;
+  font-size: larger;
+  z-index: 9;
 }
 
-#spawnBombTemporaryButton{
-    position: fixed;
-    top: 20px; 
-    left: 500px;
-    padding: 20px;
-    font-size: larger;
-    z-index: 9;
+#moveSubmarinesTemporaryButton {
+  position: fixed;
+  top: 20px;
+  left: 250px;
+  padding: 20px;
+  font-size: larger;
+  z-index: 9;
 }
 
-#leftButton{
-    width: 22%;
-    left: 0;
+#spawnBombTemporaryButton {
+  position: fixed;
+  top: 20px;
+  left: 500px;
+  padding: 20px;
+  font-size: larger;
+  z-index: 9;
 }
 
-#actionButton{
-    width: 56%;
-    left: 22%;
+#leftButton {
+  width: 22%;
+  left: 0;
 }
 
-#rightButton{
-    width: 22%;
-    left: 78%;
+#actionButton {
+  width: 56%;
+  left: 22%;
+}
+
+#rightButton {
+  width: 22%;
+  left: 78%;
 }

@@ -1,31 +1,34 @@
 @import url(dayVariables.css);
 
-body{
-    background-color: white;
-    color: black;
+body {
+  background-color: white;
+  color: black;
 }
-#welcomeMask{
-    background-color: var(--logoWhite);
+#welcomeMask {
+  background-color: var(--logoWhite);
 }
-#playBox{
-    background-color: var(--logoWhiteButton);
-    border-color: black !important;
+#playBox {
+  background-color: var(--logoWhiteButton);
+  border-color: black !important;
 }
-#playBox:hover{
-    background-color: var(--logoWhiteButtonHover);
+#playBox:hover {
+  background-color: var(--logoWhiteButtonHover);
 }
-#sky{
-    background-color: var(--sky);
+#sky {
+  background-color: var(--sky);
 }
-#waves{
-    background-image: url("../../images/day/wave.png");
+#waves {
+  background-image: url('../../images/day/wave.png');
 }
-#ocean{
-    background-color: var(--water);
+#ocean {
+  background-color: var(--water);
 }
-#ship{
-   background-image: url("../../images/day/boatRight.png");
+#ship {
+  background-image: url('../../images/day/boatRight.png');
 }
-.submarine{
-    background-image: url("../../images/day/submarineRight.png");
+.submarine {
+  background-image: url('../../images/day/submarineRight.png');
+}
+.bomb {
+  background-image: url('../../images/day/bomb.png');
 }
