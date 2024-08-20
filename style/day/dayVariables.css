@@ -1,7 +1,7 @@
-:root{
-    --logoWhite: rgb(240, 240, 228);
-    --logoWhiteButton: rgb(226, 226, 206);
-    --logoWhiteButtonHover: rgb(211, 211, 195);
-    --sky: rgb(177, 229, 229);
-    --water: rgb(75, 131, 131);
+:root {
+  --logoWhite: rgb(240, 240, 228);
+  --logoWhiteButton: rgb(226, 226, 206);
+  --logoWhiteButtonHover: rgb(211, 211, 195);
+  --sky: rgb(177, 229, 229);
+  --water: rgb(75, 131, 131);
 }

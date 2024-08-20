@@ -1,0 +1,19 @@
+{
+  "printWidth": 150,
+  "singleAttributePerLine": false,
+  "singleQuote": true,
+  "semi": true,
+  "tabWidth": 2,
+  "endOfLine": "auto",
+  "arrowParens": "always",
+  "bracketSpacing": false,
+  "overrides": [
+    {
+      "files": ["*.html"],
+      "options": {
+        "bracketSameLine": true,
+        "proseWrap": "never"
+      }
+    }
+  ]
+}
