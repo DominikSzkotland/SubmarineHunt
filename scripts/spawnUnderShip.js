@@ -1,4 +1,5 @@
 import sizeAdjuster from './sizeAdjuster.js';
+import {droppedElements} from './elementsTemplates.js';
 const spawnUnderShip = (TemplateOfElementToSpawn = {elementType: undefined, styleClass: undefined}) => {
   const elementToSpawn = document.createElement('div');
   const shipElement = document.getElementById('ship');
@@ -11,6 +12,7 @@ const spawnUnderShip = (TemplateOfElementToSpawn = {elementType: undefined, styl
   const shipMiddle = shipElement.offsetLeft + shipElement.offsetWidth / 2 - elementToSpawn.offsetWidth / 2;
   const skyWidth = document.getElementById('sky').offsetWidth;
   elementToSpawn.style.left = `${(shipMiddle / skyWidth) * 100}%`;
+  droppedElements.push(elementToSpawn);
   return elementToSpawn;
 };
 
