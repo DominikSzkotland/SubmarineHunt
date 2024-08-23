@@ -1,4 +1,4 @@
-import {removeSubmarine, removeBomb} from './elementsTemplates.js';
+import {removeElement} from './elementsTemplates.js';
 const ocean = document.getElementById('ocean');
 const moveHorizontally = (elementToMove, moveSpeed) => {
   if (elementToMove.getAttribute('data-moving') === 'true') {
@@ -17,7 +17,7 @@ const moveHorizontally = (elementToMove, moveSpeed) => {
 
 const moveTowardsRightSide = (elementToMove, moveSpeed) => {
   elementToMove.style.right = `${parseFloat(elementToMove.style.right) - moveSpeed}%`;
-  if (elementToMove.offsetLeft < ocean.offsetWidth) {
+  if (elementToMove.offsetLeft <= ocean.offsetWidth) {
     requestAnimationFrame(() => moveTowardsRightSide(elementToMove, moveSpeed));
   } else {
     removeElement(elementToMove);
@@ -26,22 +26,11 @@ const moveTowardsRightSide = (elementToMove, moveSpeed) => {
 
 const moveTowardsLeftSide = (elementToMove, moveSpeed) => {
   elementToMove.style.left = `${parseFloat(elementToMove.style.left) - moveSpeed}%`;
-  if (elementToMove.offsetLeft + elementToMove.offsetWidth > 0) {
+  if (elementToMove.offsetLeft + elementToMove.offsetWidth >= 0) {
     requestAnimationFrame(() => moveTowardsLeftSide(elementToMove, moveSpeed));
   } else {
     removeElement(elementToMove);
   }
-};
-
-const removeElement = (elementToRemove) => {
-  switch (elementToRemove.getAttribute('data-elementType')) {
-    case 'submarine':
-      removeSubmarine(elementToRemove);
-      break;
-    default:
-      console.error('You are trying to remove an undefined element!');
-  }
-  elementToRemove.remove();
 };
 
 export default moveHorizontally;

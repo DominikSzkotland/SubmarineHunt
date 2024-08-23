@@ -1,5 +1,5 @@
 import spawnUnderShip from './spawnUnderShip.js';
-import {bombTemplate, spawnedBombs} from './elementsTemplates.js';
+import {bombTemplate, addToDB, spawnedBombs} from './elementsTemplates.js';
 import fall from './InventoryElementsSpecialActions/bombFall.js';
 const switchToNextItem = () => {
   shipInventoryIndex++;
@@ -43,7 +43,7 @@ const resetInventory = () => {
       name: 'bomb',
       count: 3,
       action: () => {
-        spawnedBombs.push(spawnUnderShip(bombTemplate));
+        addToDB(spawnUnderShip(bombTemplate));
         fall(spawnedBombs, 0.5);
       },
       infinite: true,

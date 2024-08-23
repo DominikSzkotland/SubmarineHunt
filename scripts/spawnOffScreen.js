@@ -1,4 +1,5 @@
 import sizeAdjuster from './sizeAdjuster.js';
+import {addToDB} from './elementsTemplates.js';
 const spawnOffScreen = (TemplateOfElementToSpawn = {elementType: undefined, styleClass: undefined}) => {
   const elementToSpawn = document.createElement('div');
   document.getElementById('ocean').appendChild(elementToSpawn);
@@ -17,6 +18,7 @@ const spawnOffScreen = (TemplateOfElementToSpawn = {elementType: undefined, styl
   elementToSpawn.style.top = Math.random() * 100 + '%';
   sizeAdjuster(elementToSpawn);
   adjustAltitude(elementToSpawn);
+  addToDB(elementToSpawn);
   return elementToSpawn;
 };
 const adjustAltitude = (elementToSpawn) => {
