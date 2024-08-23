@@ -3,10 +3,10 @@ import {bombTemplate, addToDB, spawnedBombs} from './elementsTemplates.js';
 import fall from './InventoryElementsSpecialActions/bombFall.js';
 const switchToNextItem = () => {
   shipInventoryIndex++;
-  if (shipInventoryIndex > shipInventoryKeys.length - 1) {
+  if (shipInventoryIndex > shipInventory.length - 1) {
     shipInventoryIndex = 0;
   }
-  shipActiveItem = getInventoryItem(shipInventoryIndex);
+  shipActiveItem = shipInventory[shipInventoryIndex];
   return shipActiveItem;
 };
 
@@ -15,12 +15,9 @@ const addItemToInventory = (item) => {
 };
 
 const removeActiveItem = () => {
-  shipInventory = shipInventory.slice(shipInventoryIndex, 1);
-  shipInventoryIndex--;
-  if (shipInventoryIndex < 0) {
-    shipInventoryIndex = shipInventory.length - 1;
-  }
-  shipActiveItem = shipInventory[shipInventoryIndex];
+  shipInventory.splice(shipInventoryIndex, 1);
+  switchToNextItem();
+  useActiveItem();
   return shipActiveItem;
 };
 
@@ -30,8 +27,8 @@ const useActiveItem = () => {
   } else if (shipActiveItem.count <= 0 && shipActiveItem.infinite) {
     return;
   } else {
-    shipActiveItem.action();
     shipActiveItem.count--;
+    shipActiveItem.action();
   }
 };
 let shipInventory = [];
@@ -54,4 +51,4 @@ const resetInventory = () => {
 };
 resetInventory();
 
-export {useActiveItem, shipInventory};
+export {useActiveItem, shipInventory, addItemToInventory, switchToNextItem};

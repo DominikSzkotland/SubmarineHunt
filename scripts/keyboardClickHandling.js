@@ -1,9 +1,11 @@
 import {moveShip, stopMovingShip} from './moveShip.js';
 import performShipAction from './performShipAction.js';
+import {switchToNextItem} from './shipInventory.js';
 
 let keyForMoveLeft = 'KeyA';
 let keyForMoveRight = 'KeyD';
 let keyForPerformingAction = 'KeyS';
+let keyForSwitchingToNextItem = 'KeyW';
 
 const changeKeyForMoveLeft = (newKeyCode) => {
   keyForMoveLeft = newKeyCode;
@@ -20,17 +22,24 @@ const changeKeyForPerformingAction = (newKeyCode) => {
   updateKeyBindings();
 };
 
+const changeKeyForSwitchingToNextItem = (newKeyCode) => {
+  keyForSwitchingToNextItem = newKeyCode;
+  updateKeyBindings();
+};
+
 const updateKeyBindings = () => {
   gameKeys = {
     [keyForMoveLeft]: {pressed: false},
     [keyForMoveRight]: {pressed: false},
     [keyForPerformingAction]: {pressed: false},
+    [keyForSwitchingToNextItem]: {pressed: false},
   };
 
   keyBindings = {
     [keyForMoveLeft]: {press: () => moveShip('left', 0.4), release: () => stopMovingShip('left')},
     [keyForMoveRight]: {press: () => moveShip('right', 0.4), release: () => stopMovingShip('right')},
     [keyForPerformingAction]: {press: () => performShipAction(), release: () => {}},
+    [keyForSwitchingToNextItem]: {press: () => switchToNextItem(), release: () => {}},
   };
 };
 
