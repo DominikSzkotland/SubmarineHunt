@@ -4,7 +4,6 @@ const spawnUnderShip = (TemplateOfElementToSpawn = {elementType: undefined, styl
   const elementToSpawn = document.createElement('div');
   const shipElement = document.getElementById('ship');
   document.getElementById('ocean').appendChild(elementToSpawn);
-  const oceanElement = document.getElementById('ocean');
   elementToSpawn.classList.add(TemplateOfElementToSpawn.styleClass);
   elementToSpawn.setAttribute('data-elementType', TemplateOfElementToSpawn.elementType);
   sizeAdjuster(elementToSpawn);
