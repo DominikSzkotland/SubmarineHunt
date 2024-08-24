@@ -5,6 +5,7 @@ import adjustSize from './sizeAdjuster.js';
 import updateClickState from './keyboardClickHandling.js';
 import isTouchDevice from './touchDeviceDetection.js';
 import {submarineTemplate, spawnedSubmarines, spawnedBombs} from './elementsTemplates.js';
+import spawnAndMoveUnderWaterAndRepeat from './spawnAndMoveUnderWater.js';
 if (!isTouchDevice()) {
   const mobileSterringButtons = document.getElementsByClassName('mobileSterringButtons');
   const mobileSterringButtonsArray = Array.from(mobileSterringButtons);
@@ -25,6 +26,7 @@ const Play = () => {
   document.getElementById('playButton').removeEventListener('click', Play);
   document.getElementById('welcomeMask').classList.add('hide');
   adjustSize(document.getElementById('ship'));
+  spawnAndMoveUnderWaterAndRepeat(submarineTemplate);
 };
 document.getElementById('playBox').addEventListener('click', Play);
 window.addEventListener('resize', () => {
