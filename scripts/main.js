@@ -14,7 +14,7 @@ if (!isTouchDevice()) {
 }
 autoSwitchTheme();
 document.getElementById('spawnSubmarineTemporaryButton').addEventListener('click', () => {
-  spawnedSubmarines.push(spawnOffScreen(submarineTemplate));
+  spawnOffScreen(submarineTemplate);
 });
 document.getElementById('moveSubmarinesTemporaryButton').addEventListener('click', () => {
   spawnedSubmarines.forEach((submarine) => {
