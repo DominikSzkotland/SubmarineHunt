@@ -27,6 +27,25 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+#settingsMask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9;
+}
+#centerSettingsMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #welcomeLogo {
   width: 45%;
   height: 45%;
@@ -47,7 +66,28 @@ body {
   border-width: 5px;
   border-style: solid;
 }
+
+#startBox {
+  width: 30%;
+  height: 20%;
+  margin-top: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-width: 5px;
+  border-style: solid;
+}
 #playButton {
+  font-size: 40px;
+  padding: 7px;
+  font-weight: 600;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+#startButton {
   font-size: 40px;
   padding: 7px;
   font-weight: 600;
@@ -100,7 +140,7 @@ body {
   left: 250px;
   padding: 20px;
   font-size: larger;
-  z-index: 9;
+  z-index: 8;
 }
 
 #spawnBombTemporaryButton {
@@ -109,7 +149,16 @@ body {
   left: 500px;
   padding: 20px;
   font-size: larger;
-  z-index: 9;
+  z-index: 8;
+}
+
+#stopSubmarines{
+  position: fixed;
+  top: 20px;
+  left: 500px;
+  padding: 20px;
+  font-size: larger;
+  z-index: 8;
 }
 
 #leftButton {

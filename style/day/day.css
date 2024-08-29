@@ -7,11 +7,22 @@ body {
 #welcomeMask {
   background-color: var(--logoWhite);
 }
+#settingsMask{
+  background-color: var(--logoWhite);
+}
 #playBox {
   background-color: var(--logoWhiteButton);
   border-color: black !important;
 }
 #playBox:hover {
+  background-color: var(--logoWhiteButtonHover);
+}
+
+#startBox {
+  background-color: var(--logoWhiteButton);
+  border-color: black !important;
+}
+#startBox:hover {
   background-color: var(--logoWhiteButtonHover);
 }
 #sky {
