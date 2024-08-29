@@ -1,6 +1,11 @@
+:root {
+  --transparent: rgba(0, 0, 0, 0);
+}
+
 .hide {
   display: none !important;
 }
+
 .submarine {
   position: absolute;
   height: 5%;

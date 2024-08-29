@@ -41,7 +41,7 @@ const resetInventory = () => {
       count: 3,
       action: () => {
         addToDB(spawnUnderShip(bombTemplate));
-        fall(spawnedBombs, 0.5);
+        fall(spawnedBombs, 0.7);
       },
       infinite: true,
     },

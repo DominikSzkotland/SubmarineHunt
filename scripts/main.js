@@ -5,6 +5,7 @@ import adjustSize from './sizeAdjuster.js';
 import updateClickState from './keyboardClickHandling.js';
 import isTouchDevice from './touchDeviceDetection.js';
 import {submarineTemplate, spawnedSubmarines, spawnedBombs} from './elementsTemplates.js';
+import {startRound} from './startRound.js';
 if (!isTouchDevice()) {
   const mobileSterringButtons = document.getElementsByClassName('mobileSterringButtons');
   const mobileSterringButtonsArray = Array.from(mobileSterringButtons);
@@ -32,7 +33,10 @@ window.addEventListener('resize', () => {
   adjustSize(document.getElementById('ship'));
   adjustSize(spawnedBombs);
 });
-
+document.getElementById('startButton').addEventListener('click', () => {
+  document.getElementById('optionsMask').classList.add('hide');
+  startRound();
+});
 window.addEventListener('keydown', (event) => {
   updateClickState(event.code, true);
 });
