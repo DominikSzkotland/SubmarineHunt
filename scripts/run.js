@@ -1,13 +1,15 @@
 import spawnOffScreen from './spawnOffScreen.js';
-import {submarineTemplate} from './elementsTemplates.js';
+import {cancelAllAnimationFrames, spawnedBombs, submarineTemplate} from './elementsTemplates.js';
 import moveHorizontally from './moveHorizontally.js';
+import {flowingElements, droppedElements} from './elementsTemplates.js';
+import fall from './InventoryElementsSpecialActions/bombFall.js';
 let intervalStartTime = null;
+let intervalElapsedTime = null;
 let intervalID = null;
 const startRound = (timeToFirstRun = null) => {
   if (intervalID !== null) {
     return;
   }
-  console.log(timeToFirstRun);
   if (timeToFirstRun !== null) {
     setTimeout(() => {
       run();
@@ -26,7 +28,6 @@ const startRound = (timeToFirstRun = null) => {
 
 const chooseElementToSpawn = () => {
   const randomNumber = Math.random();
-  console.log(randomNumber);
   if (typeof randomNumber === 'number') {
     return 'submarine';
   } else {
@@ -36,7 +37,6 @@ const chooseElementToSpawn = () => {
 
 const run = () => {
   const selectedElement = chooseElementToSpawn();
-  console.log(selectedElement);
   switch (selectedElement) {
     case 'submarine':
       moveHorizontally(spawnOffScreen(submarineTemplate), 0.3);
@@ -46,4 +46,22 @@ const run = () => {
       break;
   }
 };
-export {startRound, intervalID, intervalStartTime};
+
+const pauseRun = () => {
+  cancelAllAnimationFrames();
+  clearInterval(intervalID);
+  intervalID = null;
+  const intervalEndTime = Date.now();
+  intervalElapsedTime = intervalEndTime - intervalStartTime;
+  intervalStartTime = null;
+};
+
+const resumeFrozen = () => {
+  flowingElements.forEach((element) => {
+    moveHorizontally(element, 0.3);
+  });
+  droppedElements.forEach((element) => {
+    fall(spawnedBombs, 0.7);
+  });
+};
+export {startRound, intervalID, intervalElapsedTime, pauseRun, resumeFrozen};

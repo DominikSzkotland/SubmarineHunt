@@ -2,10 +2,10 @@ import autoSwitchTheme from './themeChanger.js';
 import spawnOffScreen from './spawnOffScreen.js';
 import moveHorizontally from './moveHorizontally.js';
 import adjustSize from './sizeAdjuster.js';
-import updateClickState from './keyboardClickHandling.js';
+import updateClickState, {resetGameKeys} from './keyboardClickHandling.js';
 import isTouchDevice from './touchDeviceDetection.js';
 import {submarineTemplate, spawnedSubmarines, spawnedBombs} from './elementsTemplates.js';
-import {startRound} from './startRound.js';
+import {startRound, pauseRun, resumeFrozen} from './run.js';
 if (!isTouchDevice()) {
   const mobileSterringButtons = document.getElementsByClassName('mobileSterringButtons');
   const mobileSterringButtonsArray = Array.from(mobileSterringButtons);
@@ -23,7 +23,7 @@ document.getElementById('moveSubmarinesTemporaryButton').addEventListener('click
   });
 });
 const Play = () => {
-  document.getElementById('playButton').removeEventListener('click', Play);
+  document.getElementById('playBox').removeEventListener('click', Play);
   document.getElementById('welcomeMask').classList.add('hide');
   adjustSize(document.getElementById('ship'));
 };
@@ -43,3 +43,31 @@ window.addEventListener('keydown', (event) => {
 window.addEventListener('keyup', (event) => {
   updateClickState(event.code, false);
 });
+
+var isBlurred = false;
+window.addEventListener('blur', () => {
+  isBlurred = true;
+  pauseRun();
+  resetGameKeys();
+});
+
+window.addEventListener('focus', () => {
+  if (isBlurred && !isPaused) {
+    resumeFrozen();
+    startRound();
+    isBlurred = false;
+  }
+});
+var isPaused = false;
+document.getElementById('pauseButton').addEventListener('click', () => {
+  isPaused = true;
+  pauseRun();
+  resetGameKeys();
+});
+document.getElementById('resumeButton').addEventListener('click', () => {
+  isPaused = false;
+  resumeFrozen();
+  startRound();
+});
+
+export {isPaused, isBlurred};
