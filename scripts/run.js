@@ -54,6 +54,9 @@ const pauseRun = () => {
   const intervalEndTime = Date.now();
   intervalElapsedTime = intervalEndTime - intervalStartTime;
   intervalStartTime = null;
+  document.getElementById('pauseButton').classList.add('hide');
+  document.getElementById('pauseMask').classList.remove('hide');
+  document.getElementById('pauseMask').classList.add('pauseWindow');
 };
 
 const resumeFrozen = () => {
@@ -63,5 +66,9 @@ const resumeFrozen = () => {
   droppedElements.forEach((element) => {
     fall(spawnedBombs, 0.7);
   });
+  document.getElementById('pauseMask').classList.remove('pauseWindow');
+  document.getElementById('pauseMask').classList.add('hide');
+  document.getElementById('pauseButton').classList.remove('hide');
+  
 };
 export {startRound, intervalID, intervalElapsedTime, pauseRun, resumeFrozen};

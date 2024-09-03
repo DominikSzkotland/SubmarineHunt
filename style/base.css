@@ -146,3 +146,46 @@ body {
   -webkit-user-drag: none;
   user-select: none;
 }
+#pauseMask {
+  display: flex; /* Flexbox dla ułożenia elementów w poziomej linii */
+  justify-content: center; /* Wyśrodkowanie elementów w poziomie */
+  align-items: center; /* Wyśrodkowanie elementów w pionie */
+  position: absolute; /* Absolutne pozycjonowanie kontenera */
+  top: 50%; /* Środek ekranu w pionie */
+  left: 50%; /* Środek ekranu w poziomie */
+  transform: translate(-50%, -50%); /* Przesunięcie w lewo i w górę o 50% wysokości i szerokości */
+  width: 100%; /* Szerokość na 100% ekranu */
+  height: 100%; /* Wysokość na 100% ekranu */
+  z-index: 6;
+}
+
+/* Ustawienie stylów dla przycisków */
+#pauseMask button {
+  margin: 0 2%; /* Odstępy między przyciskami na 2% */
+  padding: 1% 3%; /* Wewnętrzny odstęp w procentach */
+  background: none;
+  border: none;
+  z-index: 6;
+}
+
+#pauseMask img{
+  width: 35%;
+  height: 35%;
+}
+
+#pauseButton{
+  transform: translate(135%); 
+  padding: 1% 3%; 
+  background: none;
+  border: none;
+  z-index: 6;
+}
+
+#pauseButton img{
+  width: 35%;
+  height: 35%;
+}
+
+.pauseWindow{
+  backdrop-filter: blur(10px);
+}

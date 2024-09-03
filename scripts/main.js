@@ -25,6 +25,7 @@ document.getElementById('moveSubmarinesTemporaryButton').addEventListener('click
 const Play = () => {
   document.getElementById('playBox').removeEventListener('click', Play);
   document.getElementById('welcomeMask').classList.add('hide');
+  document.getElementById('pauseMask').classList.add('hide');
   adjustSize(document.getElementById('ship'));
 };
 document.getElementById('playBox').addEventListener('click', Play);
