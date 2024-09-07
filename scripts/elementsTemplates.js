@@ -55,10 +55,18 @@ const removeElement = (elementToRemove) => {
 const removeSubmarine = (submarine) => {
   spawnedSubmarines.splice(spawnedSubmarines.indexOf(submarine), 1);
   flowingElements.splice(flowingElements.indexOf(submarine), 1);
+  if (submarine.getAttribute('data-animation-id')) {
+    removeAnimationIDFromList(submarine.getAttribute('data-animation-id'));
+    cancelAnimationFrame(submarine.getAttribute('data-animation-id'));
+  }
 };
 const removeBomb = (bomb) => {
   spawnedBombs.splice(spawnedBombs.indexOf(bomb), 1);
   droppedElements.splice(droppedElements.indexOf(bomb), 1);
+  if (bomb.getAttribute('data-animation-id')) {
+    removeAnimationIDFromList(bomb.getAttribute('data-animation-id'));
+    cancelAnimationFrame(bomb.getAttribute('data-animation-id'));
+  }
 };
 
 const submarineTemplate = {elementType: 'submarine', styleClass: 'submarine'};
