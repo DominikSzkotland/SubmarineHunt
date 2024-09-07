@@ -32,3 +32,15 @@ body {
 .bomb {
   background-image: url('../../images/day/bomb.png');
 }
+#pauseButton {
+  background-image: url('../../images/day/pause.png');
+}
+#resumeButton {
+  background-image: url('../../images/day/play.png');
+}
+#restartButton {
+  background-image: url('../../images/day/reload.png');
+}
+#quitButton {
+  background-image: url('../../images/day/powerSwitch.png');
+}

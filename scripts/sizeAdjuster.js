@@ -26,6 +26,28 @@ const detectAndAdjustSize = (element) => {
       const ship = element;
       ship.style.width = Math.floor(2.5 * ship.offsetHeight) + 'px';
       break;
+    case 'pauseButton':
+      const pauseButton = element;
+      pauseButton.style.width = Math.floor(1 * pauseButton.offsetHeight) + 'px';
+      break;
+    case 'resumeButton':
+      const resumeButton = element;
+      resumeButton.style.maxHeight = 'none';
+      resumeButton.style.width = Math.floor(1 * resumeButton.offsetHeight) + 'px';
+      resumeButton.style.maxHeight = Math.floor(1 * resumeButton.offsetWidth) + 'px';
+      break;
+    case 'restartButton':
+      const restartButton = element;
+      restartButton.style.maxHeight = 'none';
+      restartButton.style.width = Math.floor(1 * restartButton.offsetHeight) + 'px';
+      restartButton.style.maxHeight = Math.floor(1 * restartButton.offsetWidth) + 'px';
+      break;
+    case 'quitButton':
+      const quitButton = element;
+      quitButton.style.maxHeight = 'none';
+      quitButton.style.width = Math.floor(1 * quitButton.offsetHeight) + 'px';
+      quitButton.style.maxHeight = Math.floor(1 * quitButton.offsetWidth) + 'px';
+      break;
     default:
       console.error('You are trying to adjust an undefined element!');
       break;

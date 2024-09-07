@@ -54,21 +54,12 @@ const pauseRun = () => {
   const intervalEndTime = Date.now();
   intervalElapsedTime = intervalEndTime - intervalStartTime;
   intervalStartTime = null;
-  document.getElementById('pauseButton').classList.add('hide');
-  document.getElementById('pauseMask').classList.remove('hide');
-  document.getElementById('pauseMask').classList.add('pauseWindow');
 };
 
 const resumeFrozen = () => {
   flowingElements.forEach((element) => {
     moveHorizontally(element, 0.3);
   });
-  droppedElements.forEach((element) => {
-    fall(spawnedBombs, 0.7);
-  });
-  document.getElementById('pauseMask').classList.remove('pauseWindow');
-  document.getElementById('pauseMask').classList.add('hide');
-  document.getElementById('pauseButton').classList.remove('hide');
-  
+  fall(spawnedBombs, 0.7);
 };
 export {startRound, intervalID, intervalElapsedTime, pauseRun, resumeFrozen};
