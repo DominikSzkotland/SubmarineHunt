@@ -1,3 +1,4 @@
+import {isBlurred, isPaused} from './main.js';
 import {moveShip, stopMovingShip} from './moveShip.js';
 import performShipAction from './performShipAction.js';
 import {switchToNextItem} from './shipInventory.js';
@@ -36,8 +37,8 @@ const updateKeyBindings = () => {
   };
 
   keyBindings = {
-    [keyForMoveLeft]: {press: () => moveShip('left', 0.4), release: () => stopMovingShip('left')},
-    [keyForMoveRight]: {press: () => moveShip('right', 0.4), release: () => stopMovingShip('right')},
+    [keyForMoveLeft]: {press: () => moveShip('left', 0.45), release: () => stopMovingShip('left')},
+    [keyForMoveRight]: {press: () => moveShip('right', 0.45), release: () => stopMovingShip('right')},
     [keyForPerformingAction]: {press: () => performShipAction(), release: () => {}},
     [keyForSwitchingToNextItem]: {press: () => switchToNextItem(), release: () => {}},
   };
@@ -47,7 +48,19 @@ let gameKeys = {};
 let keyBindings = {};
 updateKeyBindings();
 
+const resetGameKeys = () => {
+  Object.keys(gameKeys).forEach((key) => {
+    gameKeys[key].pressed = false;
+    if (keyBindings[key] && keyBindings[key].release) {
+      keyBindings[key].release();
+    }
+  });
+};
+
 const updateClickState = (code, isPressed) => {
+  if (isBlurred || isPaused) {
+    return;
+  }
   if (code in gameKeys && gameKeys[code].pressed !== isPressed) {
     gameKeys[code].pressed = isPressed;
     if (isPressed) {
@@ -63,4 +76,4 @@ const updateClickState = (code, isPressed) => {
 };
 
 export default updateClickState;
-export {changeKeyForMoveLeft, changeKeyForMoveRight};
+export {changeKeyForMoveLeft, changeKeyForMoveRight, changeKeyForPerformingAction, changeKeyForSwitchingToNextItem, resetGameKeys};
