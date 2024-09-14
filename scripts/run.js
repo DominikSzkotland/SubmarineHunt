@@ -6,7 +6,7 @@ import fall from './InventoryElementsSpecialActions/bombFall.js';
 let intervalStartTime = null;
 let intervalElapsedTime = null;
 let intervalID = null;
-const startRound = (timeToFirstRun = null) => {
+const startInterval = (timeToFirstRun = null) => {
   if (intervalID !== null) {
     return;
   }
@@ -62,4 +62,4 @@ const resumeFrozen = () => {
   });
   fall(spawnedBombs, 0.7);
 };
-export {startRound, intervalID, intervalElapsedTime, pauseRun, resumeFrozen};
+export {startInterval, intervalID, intervalElapsedTime, pauseRun, resumeFrozen};

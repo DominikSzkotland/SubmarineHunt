@@ -12,6 +12,18 @@ const getNewAnimationFrame = (functionToExecute = () => {}) => {
   return animationID;
 };
 
+const removeAllElements = () => {
+  const FlowingElementsArrayLength = flowingElements.length;
+  for (let i = 0; i < FlowingElementsArrayLength; i++) {
+    removeElement(flowingElements[0]);
+  }
+
+  const DroppedElementsArrayLength = droppedElements.length;
+  for (let i = 0; i < DroppedElementsArrayLength; i++) {
+    removeElement(droppedElements[0]);
+  }
+};
+
 const removeAnimationIDFromList = (animationID) => {
   animationsIDs = animationsIDs.filter((id) => id !== animationID);
 };
@@ -22,7 +34,6 @@ const cancelAllAnimationFrames = () => {
   });
   animationsIDs = [];
 };
-
 const addToDB = (elementToSpawn) => {
   switch (elementToSpawn.getAttribute('data-elementType')) {
     case 'submarine':
@@ -42,14 +53,15 @@ const removeElement = (elementToRemove) => {
   switch (elementToRemove.getAttribute('data-elementType')) {
     case 'submarine':
       removeSubmarine(elementToRemove);
+      elementToRemove.remove();
       break;
     case 'bomb':
       removeBomb(elementToRemove);
+      elementToRemove.remove();
       break;
     default:
       console.error('You are trying to remove an undefined element!');
   }
-  elementToRemove.remove();
 };
 
 const removeSubmarine = (submarine) => {
@@ -84,4 +96,5 @@ export {
   getNewAnimationFrame,
   cancelAllAnimationFrames,
   removeAnimationIDFromList,
+  removeAllElements,
 };

@@ -51,4 +51,4 @@ const resetInventory = () => {
 };
 resetInventory();
 
-export {useActiveItem, shipInventory, addItemToInventory, switchToNextItem};
+export {useActiveItem, shipInventory, addItemToInventory, switchToNextItem, resetInventory};

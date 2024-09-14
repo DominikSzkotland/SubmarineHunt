@@ -30,10 +30,10 @@ const changeKeyForSwitchingToNextItem = (newKeyCode) => {
 
 const updateKeyBindings = () => {
   gameKeys = {
-    [keyForMoveLeft]: {pressed: false},
-    [keyForMoveRight]: {pressed: false},
-    [keyForPerformingAction]: {pressed: false},
-    [keyForSwitchingToNextItem]: {pressed: false},
+    [keyForMoveLeft]: {pressed: false, disabled: false},
+    [keyForMoveRight]: {pressed: false, disabled: false},
+    [keyForPerformingAction]: {pressed: false, disabled: false},
+    [keyForSwitchingToNextItem]: {pressed: false, disabled: false},
   };
 
   keyBindings = {
@@ -57,11 +57,23 @@ const resetGameKeys = () => {
   });
 };
 
+const disableAllKeys = () => {
+  Object.keys(gameKeys).forEach((key) => {
+    gameKeys[key].disabled = true;
+  });
+};
+
+const enableAllKeys = () => {
+  Object.keys(gameKeys).forEach((key) => {
+    gameKeys[key].disabled = false;
+  });
+};
+
 const updateClickState = (code, isPressed) => {
   if (isBlurred || isPaused) {
     return;
   }
-  if (code in gameKeys && gameKeys[code].pressed !== isPressed) {
+  if (code in gameKeys && gameKeys[code].pressed !== isPressed && !gameKeys[code].disabled) {
     gameKeys[code].pressed = isPressed;
     if (isPressed) {
       if (keyBindings[code] && keyBindings[code].press) {
@@ -75,5 +87,13 @@ const updateClickState = (code, isPressed) => {
   }
 };
 
-export default updateClickState;
-export {changeKeyForMoveLeft, changeKeyForMoveRight, changeKeyForPerformingAction, changeKeyForSwitchingToNextItem, resetGameKeys};
+export {
+  updateClickState,
+  changeKeyForMoveLeft,
+  changeKeyForMoveRight,
+  changeKeyForPerformingAction,
+  changeKeyForSwitchingToNextItem,
+  resetGameKeys,
+  disableAllKeys,
+  enableAllKeys,
+};
