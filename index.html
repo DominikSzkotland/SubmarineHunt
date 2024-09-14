@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browser Compatibility Check</title>
+    <style>
+      body {
+        display: none; /* Ukryj treść, gdy JS jest włączony */
+      }
+      .no-js {
+        display: block; /* Pokaż tylko, jeśli JS jest wyłączony */
+      }
+    </style>
+    <noscript>
+      <style>
+        body {
+          display: block;
+        }
+      </style>
+      <div class="no-js">
+        <p>JavaScript jest wyłączony w Twojej przeglądarce. Włącz go, aby kontynuować.</p>
+      </div>
+    </noscript>
+  </head>
+  <body>
+    <p>Sprawdzam obsługę przeglądarki...</p>
+
+    <script>
+      document.body.style.display = 'block'; // Pokaż treść, jeśli JS jest włączony
+
+      async function checkCompatibility() {
+        try {
+          // Sprawdzenie obsługi ES6 Modules
+          new Function("import('data:text/javascript,')");
+
+          // Sprawdzenie obsługi funkcji JavaScript (Fetch, Promises, Async/Await itd.)
+          if (!('fetch' in window)) throw new Error('Fetch API not supported');
+          if (!('Promise' in window)) throw new Error('Promises not supported');
+          new Function('async function test() {}')();
+          if (!('serviceWorker' in navigator)) throw new Error('Service Workers not supported');
+          if (!('WebSocket' in window)) throw new Error('WebSockets not supported');
+          if (!('IntersectionObserver' in window)) throw new Error('IntersectionObserver not supported');
+          if (!('clipboard' in navigator)) throw new Error('Clipboard API not supported');
+          if (!('WebAssembly' in window)) throw new Error('WebAssembly not supported');
+          if (!('RTCPeerConnection' in window)) throw new Error('WebRTC not supported');
+
+          // Sprawdzenie obsługi nowoczesnych właściwości CSS
+          if (!CSS.supports('display', 'grid')) throw new Error('CSS Grid not supported');
+          if (!CSS.supports('display', 'flex')) throw new Error('CSS Flexbox not supported');
+          if (!CSS.supports('(--a: 0)')) throw new Error('CSS Custom Properties not supported');
+
+          // Sprawdzenie obsługi prefiksów CSS
+          const prefixes = ['-webkit-', '-moz-', '-ms-', '-o-'];
+          const propertiesToCheck = ['transform', 'transition', 'animation', 'box-shadow', 'flex'];
+          propertiesToCheck.forEach((property) => {
+            if (!CSS.supports(property, 'initial')) {
+              let supported = false;
+              prefixes.forEach((prefix) => {
+                if (CSS.supports(prefix + property, 'initial')) {
+                  supported = true;
+                }
+              });
+              if (!supported) {
+                throw new Error(`CSS property ${property} with prefixes not supported`);
+              }
+            }
+          });
+
+          // Sprawdzenie dostępu do internetu
+          if (!navigator.onLine) {
+            console.warn('Brak dostępu do internetu: Użytkownik offline');
+            return; // Nie przerywaj działania, ale odnotuj brak internetu
+          }
+
+          // Próbuj pobrać mały zasób, aby sprawdzić prawdziwy dostęp do internetu
+          try {
+            const response = await fetch('https://example.com/ping.txt', {method: 'HEAD', mode: 'no-cors'});
+            if (!response.ok) throw new Error('Błąd podczas sprawdzania internetu');
+          } catch (e) {
+            console.warn('Nie można połączyć się z zasobem, brak dostępu do internetu:', e.message);
+          }
+
+          // Przekierowanie do głównej strony, jeśli wszystkie testy zakończone sukcesem
+          window.location.href = 'index.html';
+        } catch (e) {
+          console.warn('Compatibility check failed:', e.message);
+          window.location.href = 'no-support.html';
+        }
+      }
+
+      checkCompatibility();
+    </script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browser Compatibility Check</title>
+    <style>
+      body {
+        display: none; /* Ukryj treść, gdy JS jest włączony */
+      }
+      .no-js {
+        display: block; /* Pokaż tylko, jeśli JS jest wyłączony */
+      }
+    </style>
+    <noscript>
+      <style>
+        body {
+          display: block;
+        }
+      </style>
+      <div class="no-js">
+        <p>JavaScript jest wyłączony w Twojej przeglądarce. Włącz go, aby kontynuować.</p>
+      </div>
+    </noscript>
+  </head>
+  <body>
+    <p>Sprawdzam obsługę przeglądarki...</p>
+
+    <script>
+      document.body.style.display = 'block'; // Pokaż treść, jeśli JS jest włączony
+
+      async function checkCompatibility() {
+        try {
+          // Sprawdzenie obsługi ES6 Modules
+          new Function("import('data:text/javascript,')");
+
+          // Sprawdzenie obsługi funkcji JavaScript (Fetch, Promises, Async/Await itd.)
+          if (!('fetch' in window)) throw new Error('Fetch API not supported');
+          if (!('Promise' in window)) throw new Error('Promises not supported');
+          new Function('async function test() {}')();
+          if (!('serviceWorker' in navigator)) throw new Error('Service Workers not supported');
+          if (!('WebSocket' in window)) throw new Error('WebSockets not supported');
+          if (!('IntersectionObserver' in window)) throw new Error('IntersectionObserver not supported');
+          if (!('clipboard' in navigator)) throw new Error('Clipboard API not supported');
+          if (!('WebAssembly' in window)) throw new Error('WebAssembly not supported');
+          if (!('RTCPeerConnection' in window)) throw new Error('WebRTC not supported');
+
+          // Sprawdzenie obsługi nowoczesnych właściwości CSS
+          if (!CSS.supports('display', 'grid')) throw new Error('CSS Grid not supported');
+          if (!CSS.supports('display', 'flex')) throw new Error('CSS Flexbox not supported');
+          if (!CSS.supports('(--a: 0)')) throw new Error('CSS Custom Properties not supported');
+
+          // Sprawdzenie obsługi prefiksów CSS
+          const prefixes = ['-webkit-', '-moz-', '-ms-', '-o-'];
+          const propertiesToCheck = ['transform', 'transition', 'animation', 'box-shadow', 'flex'];
+          propertiesToCheck.forEach((property) => {
+            if (!CSS.supports(property, 'initial')) {
+              let supported = false;
+              prefixes.forEach((prefix) => {
+                if (CSS.supports(prefix + property, 'initial')) {
+                  supported = true;
+                }
+              });
+              if (!supported) {
+                throw new Error(`CSS property ${property} with prefixes not supported`);
+              }
+            }
+          });
+
+          // Sprawdzenie dostępu do internetu
+          if (!navigator.onLine) {
+            console.warn('Brak dostępu do internetu: Użytkownik offline');
+            return; // Nie przerywaj działania, ale odnotuj brak internetu
+          }
+
+          // Próbuj pobrać mały zasób, aby sprawdzić prawdziwy dostęp do internetu
+          try {
+            const response = await fetch('https://example.com/ping.txt', {method: 'HEAD', mode: 'no-cors'});
+            if (!response.ok) throw new Error('Błąd podczas sprawdzania internetu');
+          } catch (e) {
+            console.warn('Nie można połączyć się z zasobem, brak dostępu do internetu:', e.message);
+          }
+
+          // Przekierowanie do głównej strony, jeśli wszystkie testy zakończone sukcesem
+          window.location.href = './html/game.html';
+        } catch (e) {
+          console.warn('Compatibility check failed:', e.message);
+          window.location.href = './html/no-support.html';
+        }
+      }
+
+      checkCompatibility();
+    </script>
+  </body>
+</html>
