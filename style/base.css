@@ -3,9 +3,9 @@
 * {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   overflow: hidden;
-  -webkit-user-select: none;
-  user-select: none;
-  -webkit-user-drag: none;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-user-drag: none !important;
 }
 html,
 body {
@@ -31,9 +31,8 @@ body {
   align-items: center;
 }
 #welcomeLogo {
-  width: 45%;
   height: 45%;
-  border-radius: 10px;
+  width: 45%;
 }
 #playBox {
   width: 30%;
@@ -46,6 +45,15 @@ body {
   cursor: pointer;
   border-width: 5px;
   border-style: solid;
+}
+@media screen and (max-height: 560px) {
+  #welcomeLogo {
+    height: 30%;
+    width: 30%;
+  }
+  #playBox {
+    width: 20%;
+  }
 }
 #playButton {
   font-size: 40px;
@@ -87,9 +95,14 @@ body {
   left: 0;
 }
 
-#actionButton {
-  width: 56%;
+#actionButtonLeft {
+  width: 28%;
   left: 22%;
+}
+
+#actionButtonRight {
+  width: 28%;
+  left: 50%;
 }
 
 #rightButton {
@@ -105,24 +118,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 7;
-  background-color: var(--transparent);
-}
-#startButton {
-  font-size: 40px;
-  padding: 7px;
-  font-weight: 600;
-}
-#optionsMask {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 7;
+  z-index: 8;
   background-color: var(--transparent);
 }
 #startButton {
@@ -169,7 +165,7 @@ body {
   margin-top: 1%;
   height: 40%;
   background-size: 100% 100%;
-  z-index: 6;
+  z-index: 7;
 }
 
 #gameStateBar {

@@ -6,6 +6,7 @@ import {flowingElements, removeAllElements, droppedElements} from './elementsTem
 import {startInterval, pauseRun, resumeFrozen} from './run.js';
 import {resetHearts} from './heartsControl.js';
 import {resetInventory} from './shipInventory.js';
+import {swapButtonsFunctions, updateTouchState} from './screenTouchHandling.js';
 const startRound = () => {
   removeAllElements();
   startInterval();
@@ -56,6 +57,21 @@ if (!isTouchDevice()) {
   mobileSterringButtonsArray.forEach((element) => {
     element.remove();
   });
+  window.addEventListener('keydown', (event) => {
+    updateClickState(event.code, true);
+  });
+  window.addEventListener('keyup', (event) => {
+    updateClickState(event.code, false);
+  });
+} else {
+  for (const button of document.getElementsByClassName('mobileSterringButtons')) {
+    button.addEventListener('touchstart', () => {
+      updateTouchState(button.id, true);
+    });
+    button.addEventListener('touchend', () => {
+      updateTouchState(button.id, false);
+    });
+  }
 }
 autoSwitchTheme();
 const Play = () => {
@@ -84,13 +100,6 @@ document.getElementById('startButton').addEventListener('click', () => {
   document.getElementById('optionsMask').classList.add('hide');
   startRound();
 });
-window.addEventListener('keydown', (event) => {
-  updateClickState(event.code, true);
-});
-window.addEventListener('keyup', (event) => {
-  updateClickState(event.code, false);
-});
-
 var isBlurred = false;
 window.addEventListener('blur', () => {
   isBlurred = true;
