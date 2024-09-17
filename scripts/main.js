@@ -7,6 +7,7 @@ import {startInterval, pauseRun, resumeFrozen} from './run.js';
 import {resetHearts} from './heartsControl.js';
 import {resetInventory} from './shipInventory.js';
 const startRound = () => {
+  removeAllElements();
   startInterval();
   resetHearts();
   enableAllKeys();
@@ -18,7 +19,6 @@ const endRound = () => {
   disableAllKeys();
   resetHearts();
   resetInventory();
-  removeAllElements();
   showOptions();
 };
 const showOptions = () => {
@@ -59,6 +59,8 @@ if (!isTouchDevice()) {
 }
 autoSwitchTheme();
 const Play = () => {
+  disableAllKeys();
+  showOptions();
   document.getElementById('playBox').removeEventListener('click', Play);
   document.getElementById('welcomeMask').classList.add('hide');
   adjustSize(document.getElementById('ship'));
