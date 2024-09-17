@@ -1,4 +1,5 @@
 import {removeElement, getNewAnimationFrame, removeAnimationIDFromList} from './elementsTemplates.js';
+import {loseHeart} from './heartsControl.js';
 const ocean = document.getElementById('ocean');
 
 const moveHorizontally = (elementToMove, moveSpeed) => {
@@ -39,6 +40,9 @@ const moveTowardsRightSide = (elementToMove, moveSpeed) => {
   if (elementToMove.offsetLeft <= ocean.offsetWidth) {
     startAnimation(elementToMove, () => moveTowardsRightSide(elementToMove, moveSpeed));
   } else {
+    if (elementToMove.getAttribute('data-elementType') === 'submarine') {
+      loseHeart();
+    }
     removeElement(elementToMove);
   }
 };
@@ -50,6 +54,9 @@ const moveTowardsLeftSide = (elementToMove, moveSpeed) => {
   if (elementToMove.offsetLeft + elementToMove.offsetWidth >= 0) {
     startAnimation(elementToMove, () => moveTowardsLeftSide(elementToMove, moveSpeed));
   } else {
+    if (elementToMove.getAttribute('data-elementType') === 'submarine') {
+      loseHeart();
+    }
     removeElement(elementToMove);
   }
 };

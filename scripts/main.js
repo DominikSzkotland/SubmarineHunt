@@ -1,12 +1,34 @@
 import autoSwitchTheme from './themeChanger.js';
-import spawnOffScreen from './spawnOffScreen.js';
-import moveHorizontally from './moveHorizontally.js';
 import adjustSize from './sizeAdjuster.js';
-import updateClickState, {resetGameKeys} from './keyboardClickHandling.js';
+import {updateClickState, disableAllKeys, enableAllKeys, resetGameKeys} from './keyboardClickHandling.js';
 import isTouchDevice from './touchDeviceDetection.js';
-import {submarineTemplate, spawnedSubmarines, spawnedBombs} from './elementsTemplates.js';
-import {startRound, pauseRun, resumeFrozen} from './run.js';
-
+import {flowingElements, removeAllElements, droppedElements} from './elementsTemplates.js';
+import {startInterval, pauseRun, resumeFrozen} from './run.js';
+import {resetHearts} from './heartsControl.js';
+import {resetInventory} from './shipInventory.js';
+const startRound = () => {
+  startInterval();
+  resetHearts();
+  enableAllKeys();
+  hideOptions();
+};
+const endRound = () => {
+  pauseRun();
+  resetGameKeys();
+  disableAllKeys();
+  resetHearts();
+  resetInventory();
+  removeAllElements();
+  showOptions();
+};
+const showOptions = () => {
+  document.getElementById('optionsMask').classList.remove('hide');
+  document.getElementById('optionsMask').classList.add('blurred');
+};
+const hideOptions = () => {
+  document.getElementById('optionsMask').classList.remove('blurred');
+  document.getElementById('optionsMask').classList.add('hide');
+};
 const ShowPauseManu = () => {
   document.getElementById('pauseButton').classList.add('hide');
   document.getElementById('pauseMask').classList.remove('hide');
@@ -48,13 +70,13 @@ const Play = () => {
 };
 document.getElementById('playBox').addEventListener('click', Play);
 window.addEventListener('resize', () => {
-  adjustSize(spawnedSubmarines);
+  adjustSize(flowingElements);
+  adjustSize(droppedElements);
   adjustSize(document.getElementById('ship'));
   adjustSize(document.getElementById('pauseButton'));
   adjustSize(document.getElementById('resumeButton'));
   adjustSize(document.getElementById('restartButton'));
   adjustSize(document.getElementById('quitButton'));
-  adjustSize(spawnedBombs);
 });
 document.getElementById('startButton').addEventListener('click', () => {
   document.getElementById('optionsMask').classList.add('hide');
@@ -78,7 +100,7 @@ window.addEventListener('focus', () => {
   isBlurred = false;
   if (!isBlurred && !isPaused && document.getElementById('optionsMask').classList.contains('hide')) {
     resumeFrozen();
-    startRound();
+    startInterval();
   }
 });
 var isPaused = false;
@@ -91,8 +113,18 @@ document.getElementById('pauseButton').addEventListener('click', () => {
 document.getElementById('resumeButton').addEventListener('click', () => {
   isPaused = false;
   resumeFrozen();
-  startRound();
+  startInterval();
   HidePauseManu();
 });
-
-export {isPaused, isBlurred};
+document.getElementById('restartButton').addEventListener('click', () => {
+  isPaused = false;
+  HidePauseManu();
+  endRound();
+  startRound();
+});
+document.getElementById('quitButton').addEventListener('click', () => {
+  isPaused = false;
+  HidePauseManu();
+  endRound();
+});
+export {isPaused, isBlurred, endRound};

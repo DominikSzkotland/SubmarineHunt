@@ -44,3 +44,6 @@ body {
 #quitButton {
   background-image: url('../../images/night/powerSwitch.png');
 }
+#gameStateBar {
+  color: var(--logoWhite);
+}
