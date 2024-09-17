@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Przeglądarka nieobsługiwana</title>
+    <title>Browser not supported</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -41,10 +41,10 @@
         text-decoration: underline;
       }
 
-      /* Fallback dla starszych przeglądarek bez obsługi Flexbox */
+      /* Fallback for older browsers without Flexbox support */
       @supports not (display: flex) {
         .browser-item {
-          display: block; /* Fallback dla przeglądarek bez Flexbox */
+          display: block; /* Fallback for browsers without Flexbox */
           text-align: left;
           margin-bottom: 20px;
         }
@@ -54,86 +54,81 @@
   <body>
     <!-- Preloader -->
     <div id="preloader" style="display: none; font-size: 24px">
-      <p>Ładowanie...</p>
+      <p>Landing...</p>
     </div>
 
     <noscript>
-      <p style="color: red; font-weight: bold">
-        Twoja przeglądarka ma wyłączony JavaScript. Włącz JavaScript, aby korzystać z pełnej funkcjonalności strony.
-      </p>
+      <p style="color: red; font-weight: bold">Your browser has JavaScript disabled. Enable JavaScript to use the full functionality of the site.</p>
     </noscript>
 
-    <h1>Twoja przeglądarka nie jest obsługiwana</h1>
-    <p id="info-text">
-      Aby uzyskać pełną funkcjonalność naszej strony, prosimy o pobranie i zainstalowanie jednej z poniższych nowoczesnych przeglądarek:
-    </p>
+    <h1>Your browser is not supported</h1>
+    <p id="info-text">To get the full functionality of our site, please download and install one of the following modern browsers:</p>
 
     <ul class="browser-list" id="browser-list">
-      <!-- Lista przeglądarek na komputery/desktop -->
+      <!-- List of browsers for computers/desktop -->
       <li class="browser-item">
         <img src="../images/always/chromeLogo.png" alt="Chrome Logo" />
-        <a href="https://www.google.com/chrome/">Pobierz Google Chrome</a>
+        <a href="https://www.google.com/chrome/">Download Google Chrome</a>
       </li>
       <li class="browser-item">
         <img src="../images/always/firefoxLogo.png" alt="Firefox Logo" />
-        <a href="https://www.mozilla.org/pl/firefox/new/">Pobierz Mozilla Firefox</a>
+        <a href="https://www.mozilla.org/pl/firefox/new/">Download Mozilla Firefox</a>
       </li>
       <li class="browser-item">
         <img src="../images/always/edgeLogo.png" alt="Edge Logo" />
-        <a href="https://www.microsoft.com/edge">Pobierz Microsoft Edge</a>
+        <a href="https://www.microsoft.com/edge">Download Microsoft Edge</a>
       </li>
       <li class="browser-item">
         <img src="../images/always/safarilogo.png" alt="Safari Logo" />
-        <a href="https://www.apple.com/safari/">Pobierz Apple Safari</a>
+        <a href="https://www.apple.com/safari/">Download Apple Safari</a>
       </li>
       <li class="browser-item">
         <img src="../images/always/operaLogo.png" alt="Opera Logo" />
-        <a href="https://www.opera.com/">Pobierz Opera</a>
+        <a href="https://www.opera.com/">Download Opera</a>
       </li>
     </ul>
 
     <script>
       function isMobile() {
-        // Bardzo proste sprawdzenie czy urządzenie jest mobilne na podstawie user-agent
+        // Very simple check if the device is mobile based on user-agent
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-        // Sprawdź dla urządzeń z Androidem, iPhone, iPad, iPod
+        // Check for Android, iPhone, iPad, iPod devices
         return /android|iphone|ipad|ipod/i.test(userAgent);
       }
 
-      // Jeśli użytkownik jest na urządzeniu mobilnym, pokaż inne przeglądarki
+      // If user is on mobile device, show other browsers
       if (isMobile()) {
-        document.getElementById('info-text').textContent =
-          'Twoja przeglądarka mobilna nie jest obsługiwana. Pobierz jedną z nowoczesnych przeglądarek mobilnych:';
+        document.getElementById('info-text').textContent = 'Your mobile browser is not supported. Please download one of the modern mobile browsers:';
         var browserList = document.getElementById('browser-list');
         browserList.innerHTML = `
                 <li class="browser-item">
                     <img src="../images/always/chromeLogo.png" alt="Chrome Logo" />
-                    <a href="https://play.google.com/store/apps/details?id=com.android.chrome">Pobierz Google Chrome (Android)</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.android.chrome">Download Google Chrome (Android)</a>
                 </li>
                 <li class="browser-item">
                     <img src="../images/always/firefoxLogo.png" alt="Firefox Logo" />
-                    <a href="https://play.google.com/store/apps/details?id=org.mozilla.firefox">Pobierz Mozilla Firefox (Android)</a>
+                    <a href="https://play.google.com/store/apps/details?id=org.mozilla.firefox">Download Mozilla Firefox (Android)</a>
                 </li>
                 <li class="browser-item">
                     <img src="../images/always/edgeLogo.png" alt="Edge Logo" />
-                    <a href="https://play.google.com/store/apps/details?id=com.microsoft.emmx">Pobierz Microsoft Edge (Android)</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.microsoft.emmx">Download Microsoft Edge (Android)</a>
                 </li>
                 <li class="browser-item">
                     <img src="../images/always/safarilogo.png" alt="Safari Logo" />
-                    <a href="https://apps.apple.com/pl/app/safari/id284417350">Safari (iOS, preinstalowany)</a>
+                    <a href="https://apps.apple.com/pl/app/safari/id284417350">Download Safari (iOS)</a>
                 </li>
                 <li class="browser-item">
                     <img src="../images/always/operaLogo.png" alt="Opera Logo" />
-                    <a href="https://play.google.com/store/apps/details?id=com.opera.browser">Pobierz Opera (Android)</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.opera.browser">Download Opera (Android)</a>
                 </li>
             `;
       }
 
-      // Preloader - pokaż podczas ładowania strony
-      document.getElementById('preloader').style.display = 'block'; // Pokaż preloader
+      // Preloader - show while page is loading
+      document.getElementById('preloader').style.display = 'block'; // Show preloader
       window.addEventListener('load', function () {
-        document.getElementById('preloader').style.display = 'none'; // Ukryj po pełnym załadowaniu strony
+        document.getElementById('preloader').style.display = 'none'; // Hide after page is fully loaded
       });
     </script>
   </body>
