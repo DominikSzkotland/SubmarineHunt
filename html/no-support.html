@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,10 +41,9 @@
         text-decoration: underline;
       }
 
-      /* Fallback for older browsers without Flexbox support */
       @supports not (display: flex) {
         .browser-item {
-          display: block; /* Fallback for browsers without Flexbox */
+          display: block;
           text-align: left;
           margin-bottom: 20px;
         }
@@ -52,7 +51,6 @@
     </style>
   </head>
   <body>
-    <!-- Preloader -->
     <div id="preloader" style="display: none; font-size: 24px">
       <p>Landing...</p>
     </div>
@@ -65,7 +63,6 @@
     <p id="info-text">To get the full functionality of our site, please download and install one of the following modern browsers:</p>
 
     <ul class="browser-list" id="browser-list">
-      <!-- List of browsers for computers/desktop -->
       <li class="browser-item">
         <img src="../images/always/chromeLogo.png" alt="Chrome Logo" />
         <a href="https://www.google.com/chrome/">Download Google Chrome</a>
@@ -79,7 +76,7 @@
         <a href="https://www.microsoft.com/edge">Download Microsoft Edge</a>
       </li>
       <li class="browser-item">
-        <img src="../images/always/safarilogo.png" alt="Safari Logo" />
+        <img src="../images/always/safariLogo.png" alt="Safari Logo" />
         <a href="https://www.apple.com/safari/">Download Apple Safari</a>
       </li>
       <li class="browser-item">
@@ -90,14 +87,10 @@
 
     <script>
       function isMobile() {
-        // Very simple check if the device is mobile based on user-agent
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-        // Check for Android, iPhone, iPad, iPod devices
         return /android|iphone|ipad|ipod/i.test(userAgent);
       }
 
-      // If user is on mobile device, show other browsers
       if (isMobile()) {
         document.getElementById('info-text').textContent = 'Your mobile browser is not supported. Please download one of the modern mobile browsers:';
         var browserList = document.getElementById('browser-list');
@@ -115,7 +108,7 @@
                     <a href="https://play.google.com/store/apps/details?id=com.microsoft.emmx">Download Microsoft Edge (Android)</a>
                 </li>
                 <li class="browser-item">
-                    <img src="../images/always/safarilogo.png" alt="Safari Logo" />
+                    <img src="../images/always/safariLogo.png" alt="Safari Logo" />
                     <a href="https://apps.apple.com/pl/app/safari/id284417350">Download Safari (iOS)</a>
                 </li>
                 <li class="browser-item">
@@ -125,10 +118,9 @@
             `;
       }
 
-      // Preloader - show while page is loading
-      document.getElementById('preloader').style.display = 'block'; // Show preloader
+      document.getElementById('preloader').style.display = 'block';
       window.addEventListener('load', function () {
-        document.getElementById('preloader').style.display = 'none'; // Hide after page is fully loaded
+        document.getElementById('preloader').style.display = 'none';
       });
     </script>
   </body>

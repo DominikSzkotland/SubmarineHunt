@@ -3,19 +3,22 @@ import adjustSize from './sizeAdjuster.js';
 import {updateClickState, disableAllKeys, enableAllKeys, resetGameKeys} from './keyboardClickHandling.js';
 import isTouchDevice from './touchDeviceDetection.js';
 import {flowingElements, removeAllElements, droppedElements} from './elementsTemplates.js';
-import {startInterval, pauseRun, resumeFrozen} from './run.js';
+import {startInterval, pauseRun, resumeFrozen, intervalElapsedTime} from './run.js';
 import {resetHearts} from './heartsControl.js';
 import {resetInventory} from './shipInventory.js';
 import {swapButtonsFunctions, updateTouchState} from './screenTouchHandling.js';
+import * as timer from './timerControl.js';
 const startRound = () => {
   removeAllElements();
-  startInterval();
+  startInterval(intervalElapsedTime);
+  timer.startTimer(timer.intervalElapsedTime);
   resetHearts();
   enableAllKeys();
   hideOptions();
 };
 const endRound = () => {
   pauseRun();
+  timer.pauseTimer();
   resetGameKeys();
   disableAllKeys();
   resetHearts();
@@ -103,6 +106,7 @@ document.getElementById('startButton').addEventListener('click', () => {
 var isBlurred = false;
 window.addEventListener('blur', () => {
   isBlurred = true;
+  timer.pauseTimer();
   pauseRun();
   resetGameKeys();
 });
@@ -111,12 +115,14 @@ window.addEventListener('focus', () => {
   isBlurred = false;
   if (!isBlurred && !isPaused && document.getElementById('optionsMask').classList.contains('hide')) {
     resumeFrozen();
-    startInterval();
+    startInterval(intervalElapsedTime);
+    timer.startTimer(timer.intervalElapsedTime);
   }
 });
 var isPaused = false;
 document.getElementById('pauseButton').addEventListener('click', () => {
   isPaused = true;
+  timer.pauseTimer();
   pauseRun();
   resetGameKeys();
   ShowPauseManu();
@@ -124,7 +130,8 @@ document.getElementById('pauseButton').addEventListener('click', () => {
 document.getElementById('resumeButton').addEventListener('click', () => {
   isPaused = false;
   resumeFrozen();
-  startInterval();
+  startInterval(intervalElapsedTime);
+  timer.startTimer(timer.intervalElapsedTime);
   HidePauseManu();
 });
 document.getElementById('restartButton').addEventListener('click', () => {
