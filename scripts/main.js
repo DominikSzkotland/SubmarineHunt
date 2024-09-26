@@ -19,6 +19,7 @@ const startRound = () => {
 const endRound = () => {
   pauseRun();
   timer.pauseTimer();
+  timer.resetTimer();
   resetGameKeys();
   disableAllKeys();
   resetHearts();
