@@ -1,4 +1,4 @@
-import {shipInventory} from './../shipInventory.js';
+import {shipInventory, updateAmmoInStatusBar} from './../shipInventory.js';
 import {removeElement, flowingElements, getNewAnimationFrame, removeAnimationIDFromList} from '../elementsTemplates.js';
 import checkCollision from '../collisionChecking.js';
 const ocean = document.getElementById('ocean');
@@ -31,8 +31,9 @@ const moving = (element, speed) => {
     if (checkCollision(element, flowingElements[i])) {
       removeElement(element);
       removeElement(flowingElements[i]);
-      const bombIndex = shipInventory.findIndex((item) => item.name === 'bomb');
+      const bombIndex = shipInventory.findIndex((item) => item.name === 'Bomb');
       shipInventory[bombIndex].count++;
+      updateAmmoInStatusBar();
       return;
     }
   }
@@ -41,8 +42,9 @@ const moving = (element, speed) => {
     startAnimation(element, () => moving(element, speed));
   } else {
     removeElement(element);
-    const bombIndex = shipInventory.findIndex((item) => item.name === 'bomb');
+    const bombIndex = shipInventory.findIndex((item) => item.name === 'Bomb');
     shipInventory[bombIndex].count++;
+    updateAmmoInStatusBar();
   }
 };
 export default fall;
