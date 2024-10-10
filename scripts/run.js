@@ -1,65 +1,53 @@
-import spawnOffScreen from './spawnOffScreen.js';
-import {cancelAllAnimationFrames, spawnedBombs, submarineTemplate} from './elementsTemplates.js';
-import moveHorizontally from './moveHorizontally.js';
-import {flowingElements, droppedElements} from './elementsTemplates.js';
+import {cancelAllAnimationFrames, flowingElements, spawnedBombs} from './elementsTemplates.js';
 import fall from './InventoryElementsSpecialActions/bombFall.js';
-let intervalStartTime = null;
-let intervalElapsedTime = null;
-let intervalID = null;
-const startInterval = (timeToFirstRun = null) => {
-  if (intervalID !== null) {
-    return;
+import moveHorizontally from './moveHorizontally.js';
+
+let timeoutID = null;
+let startTime = 0;
+let pauseTime = 0;
+let missingTime = 0;
+let primeDelay = null;
+const start = (functionToExecute = () => {}, delayTime = 0) => {
+  if (primeDelay === null) {
+    primeDelay = delayTime;
   }
-  if (timeToFirstRun !== null) {
-    setTimeout(() => {
-      run();
-      intervalID = setInterval(() => {
-        intervalStartTime = Date.now();
-        run();
-      }, 2000);
-    }, timeToFirstRun);
+  startTime = Date.now();
+  if (pauseTime !== 0) {
+    timeoutID = setTimeout(() => executeProvidedCode(functionToExecute), delayTime - missingTime);
+    pauseTime = 0;
   } else {
-    intervalID = setInterval(() => {
-      intervalStartTime = Date.now();
-      run();
-    }, 2000);
+    timeoutID = setTimeout(() => executeProvidedCode(functionToExecute), delayTime);
   }
 };
 
-const chooseElementToSpawn = () => {
-  const randomNumber = Math.random();
-  if (typeof randomNumber === 'number') {
-    return 'submarine';
-  } else {
-    console.error('You are trying to spawn an undefined element!');
-  }
-};
-
-const run = () => {
-  const selectedElement = chooseElementToSpawn();
-  switch (selectedElement) {
-    case 'submarine':
-      moveHorizontally(spawnOffScreen(submarineTemplate), 0.3);
-      break;
-    default:
-      console.error('You are trying to spawn an undefined element!');
-      break;
-  }
-};
-
-const pauseRun = () => {
-  cancelAllAnimationFrames();
-  clearInterval(intervalID);
-  intervalID = null;
-  const intervalEndTime = Date.now();
-  intervalElapsedTime = intervalEndTime - intervalStartTime;
-  intervalStartTime = null;
-};
-
-const resumeFrozen = () => {
+const resume = () => {
   flowingElements.forEach((element) => {
     moveHorizontally(element, 0.3);
   });
   fall(spawnedBombs, 0.7);
 };
-export {startInterval, intervalID, intervalElapsedTime, pauseRun, resumeFrozen};
+
+const pause = () => {
+  if (timeoutID === null) return;
+  pauseTime = Date.now();
+  missingTime = pauseTime - startTime;
+  clearTimeout(timeoutID);
+  cancelAllAnimationFrames();
+  timeoutID = null;
+};
+
+const end = () => {
+  clearTimeout(timeoutID);
+  timeoutID = null;
+  startTime = 0;
+  pauseTime = 0;
+  missingTime = 0;
+  primeDelay = null;
+};
+
+const executeProvidedCode = (providedFunction = () => {}) => {
+  providedFunction();
+  start(providedFunction, primeDelay);
+};
+
+export {end, pause, resume, start};
