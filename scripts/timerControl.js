@@ -13,7 +13,7 @@ const updateTime = () => {
   seconds = Math.floor((time % (1000 * 60)) / 1000);
 };
 
-const updateTimer = () => {
+const updateClock = () => {
   if (minutes < 10) {
     minutesElement.innerHTML = '0' + minutes;
   } else {
@@ -25,43 +25,47 @@ const updateTimer = () => {
     secondsElement.innerHTML = seconds;
   }
 };
-const resetTimer = () => {
+const reset = () => {
   time = 0;
   minutes = 0;
   seconds = 0;
   intervalID = null;
   intervalElapsedTime = null;
   intervalStartTime = null;
-  updateTimer();
+  updateClock();
 };
 
-const startTimer = (timeToFirstRun = null) => {
+const start = (timeToFirstRun = null) => {
   if (timeToFirstRun !== null) {
     setTimeout(() => {
       updateTime();
-      updateTimer();
+      updateClock();
       intervalID = setInterval(() => {
         intervalStartTime = Date.now();
         updateTime();
-        updateTimer();
+        updateClock();
       }, 1000);
     }, timeToFirstRun);
   } else {
     intervalID = setInterval(() => {
       intervalStartTime = Date.now();
       updateTime();
-      updateTimer();
+      updateClock();
     }, 1000);
   }
 
   return intervalID;
 };
 
-const pauseTimer = () => {
+const pause = () => {
+  if (intervalID === null) {
+    return;
+  }
   clearInterval(intervalID);
   intervalID = null;
   const intervalEndTime = Date.now();
   intervalElapsedTime = intervalEndTime - intervalStartTime;
+  intervalStartTime = null;
 };
 
-export {startTimer, pauseTimer, resetTimer, intervalElapsedTime};
+export {start, pause, reset, intervalElapsedTime};

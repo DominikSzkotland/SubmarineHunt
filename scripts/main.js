@@ -3,28 +3,53 @@ import adjustSize from './sizeAdjuster.js';
 import {updateClickState, disableAllKeys, enableAllKeys, resetGameKeys} from './keyboardClickHandling.js';
 import isTouchDevice from './touchDeviceDetection.js';
 import {flowingElements, removeAllElements, droppedElements} from './elementsTemplates.js';
-import {startInterval, pauseRun, resumeFrozen, intervalElapsedTime} from './run.js';
 import {resetHearts} from './heartsControl.js';
 import {resetInventory} from './shipInventory.js';
 import {swapButtonsFunctions, updateTouchState} from './screenTouchHandling.js';
+import * as run from './run.js';
 import * as timer from './timerControl.js';
+import {spawnRandomElement} from './randomElementSpawner.js';
+
 const startRound = () => {
+  console.log('start round');
+  isPaused = false;
+  run.start(spawnRandomElement, 2000);
+  timer.start();
+  enableAllKeys();
   removeAllElements();
-  startInterval(intervalElapsedTime);
-  timer.startTimer(timer.intervalElapsedTime);
   resetHearts();
   enableAllKeys();
   hideOptions();
 };
 const endRound = () => {
-  pauseRun();
-  timer.pauseTimer();
-  timer.resetTimer();
+  console.log('end round');
+  HidePauseManu();
+  run.end();
+  timer.pause();
+  timer.reset();
   resetGameKeys();
   disableAllKeys();
   resetHearts();
   resetInventory();
   showOptions();
+};
+const pauseRound = () => {
+  console.log('pause round');
+  run.pause();
+  resetGameKeys();
+  timer.pause();
+  resetGameKeys();
+  disableAllKeys();
+};
+const resumeRound = () => {
+  console.log('resume round');
+  isPaused = false;
+  HidePauseManu();
+  run.resume();
+  run.start(spawnRandomElement, 2000);
+  timer.start(timer.intervalElapsedTime);
+  resetGameKeys();
+  enableAllKeys();
 };
 const showOptions = () => {
   document.getElementById('optionsMask').classList.remove('hide');
@@ -47,6 +72,7 @@ const HidePauseManu = () => {
   document.getElementById('pauseMask').classList.remove('blurred');
   document.getElementById('pauseMask').classList.add('hide');
   document.getElementById('pauseButton').classList.remove('hide');
+  adjustSize(document.getElementById('pauseButton'));
 };
 document.addEventListener(
   'dragstart',
@@ -106,44 +132,32 @@ document.getElementById('startButton').addEventListener('click', () => {
 });
 var isBlurred = false;
 window.addEventListener('blur', () => {
+  console.log('blur');
   isBlurred = true;
-  timer.pauseTimer();
-  pauseRun();
-  resetGameKeys();
+  pauseRound();
 });
 
 window.addEventListener('focus', () => {
+  console.log('focus');
   isBlurred = false;
   if (!isBlurred && !isPaused && document.getElementById('optionsMask').classList.contains('hide')) {
-    resumeFrozen();
-    startInterval(intervalElapsedTime);
-    timer.startTimer(timer.intervalElapsedTime);
+    resumeRound();
   }
 });
-var isPaused = false;
+var isPaused = true;
 document.getElementById('pauseButton').addEventListener('click', () => {
   isPaused = true;
-  timer.pauseTimer();
-  pauseRun();
-  resetGameKeys();
+  pauseRound();
   ShowPauseManu();
 });
 document.getElementById('resumeButton').addEventListener('click', () => {
-  isPaused = false;
-  resumeFrozen();
-  startInterval(intervalElapsedTime);
-  timer.startTimer(timer.intervalElapsedTime);
-  HidePauseManu();
+  resumeRound();
 });
 document.getElementById('restartButton').addEventListener('click', () => {
-  isPaused = false;
-  HidePauseManu();
   endRound();
   startRound();
 });
 document.getElementById('quitButton').addEventListener('click', () => {
-  isPaused = false;
-  HidePauseManu();
   endRound();
 });
 export {isPaused, isBlurred, endRound};
