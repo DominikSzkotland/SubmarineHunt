@@ -1,5 +1,6 @@
 import {shipInventory, updateAmmoInStatusBar} from './../shipInventory.js';
-import {removeElement, flowingElements, getNewAnimationFrame, removeAnimationIDFromList} from '../elementsTemplates.js';
+import {removeElement, flowingElements, getNewAnimationFrame, removeAnimationIDFromList, elementTemplates} from '../elementsTemplates.js';
+import * as points from '../pointsControl.js';
 import checkCollision from '../collisionChecking.js';
 const ocean = document.getElementById('ocean');
 const fall = (elements, speed) => {
@@ -29,6 +30,14 @@ const moving = (element, speed) => {
   stopAnimation(element);
   for (let i = 0; i < flowingElements.length; i++) {
     if (checkCollision(element, flowingElements[i])) {
+      const elementType = element.getAttribute('data-elementType');
+      const flowingElementType = flowingElements[i].getAttribute('data-elementType');
+      if (elementType && elementTemplates[elementType]) {
+        points.add(elementTemplates[elementType].pointValue);
+      }
+      if (flowingElementType && elementTemplates[flowingElementType]) {
+        points.add(elementTemplates[flowingElementType].pointValue);
+      }
       removeElement(element);
       removeElement(flowingElements[i]);
       const bombIndex = shipInventory.findIndex((item) => item.name === 'Bomb');

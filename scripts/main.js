@@ -9,9 +9,9 @@ import {swapButtonsFunctions, updateTouchState} from './screenTouchHandling.js';
 import * as run from './run.js';
 import * as timer from './timerControl.js';
 import {spawnRandomElement} from './randomElementSpawner.js';
+import * as points from './pointsControl.js';
 
 const startRound = () => {
-  console.log('start round');
   isPaused = false;
   run.start(spawnRandomElement, 2000);
   timer.start();
@@ -22,19 +22,19 @@ const startRound = () => {
   hideOptions();
 };
 const endRound = () => {
-  console.log('end round');
   HidePauseManu();
   run.end();
   timer.pause();
   timer.reset();
+  points.reset();
   resetGameKeys();
   disableAllKeys();
   resetHearts();
   resetInventory();
   showOptions();
+  removeAllElements();
 };
 const pauseRound = () => {
-  console.log('pause round');
   run.pause();
   resetGameKeys();
   timer.pause();
@@ -42,7 +42,6 @@ const pauseRound = () => {
   disableAllKeys();
 };
 const resumeRound = () => {
-  console.log('resume round');
   isPaused = false;
   HidePauseManu();
   run.resume();
@@ -114,6 +113,7 @@ const Play = () => {
   adjustSize(document.getElementById('resumeButton'));
   adjustSize(document.getElementById('restartButton'));
   adjustSize(document.getElementById('quitButton'));
+  points.addHtmlOutput(document.getElementById('scoreValue'));
   document.getElementById('pauseMask').classList.add('hide');
 };
 document.getElementById('playBox').addEventListener('click', Play);
@@ -132,13 +132,11 @@ document.getElementById('startButton').addEventListener('click', () => {
 });
 var isBlurred = false;
 window.addEventListener('blur', () => {
-  console.log('blur');
   isBlurred = true;
   pauseRound();
 });
 
 window.addEventListener('focus', () => {
-  console.log('focus');
   isBlurred = false;
   if (!isBlurred && !isPaused && document.getElementById('optionsMask').classList.contains('hide')) {
     resumeRound();
