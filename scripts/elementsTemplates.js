@@ -81,12 +81,13 @@ const removeBomb = (bomb) => {
   }
 };
 
-const submarineTemplate = {elementType: 'submarine', styleClass: 'submarine'};
-const bombTemplate = {elementType: 'bomb', styleClass: 'bomb'};
+const elementTemplates = {
+  submarine: {elementType: 'submarine', styleClass: 'submarine', pointValue: 10},
+  bomb: {elementType: 'bomb', styleClass: 'bomb', pointValue: 0},
+};
 
 export {
-  submarineTemplate,
-  bombTemplate,
+  elementTemplates,
   spawnedSubmarines,
   spawnedBombs,
   droppedElements,

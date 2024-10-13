@@ -1,6 +1,14 @@
 import sizeAdjuster from './sizeAdjuster.js';
 import {addToDB} from './elementsTemplates.js';
-const spawnOffScreen = (TemplateOfElementToSpawn = {elementType: undefined, styleClass: undefined}) => {
+const spawnOffScreen = (TemplateOfElementToSpawn = null) => {
+  if (!TemplateOfElementToSpawn) {
+    console.error('Provided template is not valid!');
+    return;
+  }
+  if (!TemplateOfElementToSpawn.elementType || !TemplateOfElementToSpawn.styleClass) {
+    console.error('Provided template is not valid!');
+    return;
+  }
   const elementToSpawn = document.createElement('div');
   document.getElementById('ocean').appendChild(elementToSpawn);
   elementToSpawn.classList.add(TemplateOfElementToSpawn.styleClass);

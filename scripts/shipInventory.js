@@ -1,5 +1,5 @@
 import spawnUnderShip from './spawnUnderShip.js';
-import {bombTemplate, addToDB, spawnedBombs} from './elementsTemplates.js';
+import {elementTemplates, addToDB, spawnedBombs} from './elementsTemplates.js';
 import fall from './InventoryElementsSpecialActions/bombFall.js';
 const ammoTypeStatusBar = document.getElementById('ammoType');
 const ammoCountStatusBar = document.getElementById('ammoCount');
@@ -66,7 +66,7 @@ const resetInventory = () => {
       name: 'Bomb',
       count: 3,
       action: () => {
-        addToDB(spawnUnderShip(bombTemplate));
+        addToDB(spawnUnderShip(elementTemplates.bomb));
         fall(spawnedBombs, 0.7);
       },
       infinite: true,
