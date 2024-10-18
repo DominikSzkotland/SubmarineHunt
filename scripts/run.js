@@ -1,4 +1,4 @@
-import {cancelAllAnimationFrames, flowingElements, spawnedBombs} from './elementsTemplates.js';
+import {cancelAllAnimationFrames, elementTemplates, spawnedBombs, spawnedSubmarines} from './elementsTemplates.js';
 import fall from './InventoryElementsSpecialActions/bombFall.js';
 import moveHorizontally from './moveHorizontally.js';
 
@@ -21,10 +21,10 @@ const start = (functionToExecute = () => {}, delayTime = 0) => {
 };
 
 const resume = () => {
-  flowingElements.forEach((element) => {
-    moveHorizontally(element, 0.3);
+  spawnedSubmarines.forEach((element) => {
+    moveHorizontally(element, elementTemplates.submarine.speed);
   });
-  fall(spawnedBombs, 0.7);
+  fall(spawnedBombs, elementTemplates.bomb.speed);
 };
 
 const pause = () => {
