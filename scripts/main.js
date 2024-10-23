@@ -10,6 +10,7 @@ import * as run from './run.js';
 import * as timer from './timerControl.js';
 import {spawnRandomElement} from './randomElementSpawner.js';
 import * as points from './pointsControl.js';
+import * as windowRatio from './windowRatioChecker.js';
 
 const startRound = () => {
   isPaused = false;
@@ -35,14 +36,26 @@ const endRound = () => {
   removeAllElements();
 };
 const pauseRound = () => {
+  isPaused = true;
   run.pause();
   resetGameKeys();
   timer.pause();
   resetGameKeys();
   disableAllKeys();
 };
+
+const blurFreeze = () => {
+  isBlurred = true;
+  run.pause();
+  resetGameKeys();
+  timer.pause();
+  resetGameKeys();
+  disableAllKeys();
+};
+
 const resumeRound = () => {
   isPaused = false;
+  isBlurred = false;
   HidePauseManu();
   run.resume();
   run.start(spawnRandomElement, 2000);
@@ -62,7 +75,6 @@ const ShowPauseManu = () => {
   document.getElementById('pauseButton').classList.add('hide');
   document.getElementById('pauseMask').classList.remove('hide');
   document.getElementById('pauseMask').classList.add('blurred');
-  adjustSize(document.getElementById('pauseButton'));
   adjustSize(document.getElementById('resumeButton'));
   adjustSize(document.getElementById('restartButton'));
   adjustSize(document.getElementById('quitButton'));
@@ -71,7 +83,6 @@ const HidePauseManu = () => {
   document.getElementById('pauseMask').classList.remove('blurred');
   document.getElementById('pauseMask').classList.add('hide');
   document.getElementById('pauseButton').classList.remove('hide');
-  adjustSize(document.getElementById('pauseButton'));
 };
 document.addEventListener(
   'dragstart',
@@ -104,12 +115,12 @@ if (!isTouchDevice()) {
 }
 autoSwitchTheme();
 const Play = () => {
+  windowRatio.check();
   disableAllKeys();
   showOptions();
   document.getElementById('playBox').removeEventListener('click', Play);
   document.getElementById('welcomeMask').classList.add('hide');
   adjustSize(document.getElementById('ship'));
-  adjustSize(document.getElementById('pauseButton'));
   adjustSize(document.getElementById('resumeButton'));
   adjustSize(document.getElementById('restartButton'));
   adjustSize(document.getElementById('quitButton'));
@@ -118,10 +129,10 @@ const Play = () => {
 };
 document.getElementById('playBox').addEventListener('click', Play);
 window.addEventListener('resize', () => {
+  windowRatio.check();
   adjustSize(flowingElements);
   adjustSize(droppedElements);
   adjustSize(document.getElementById('ship'));
-  adjustSize(document.getElementById('pauseButton'));
   adjustSize(document.getElementById('resumeButton'));
   adjustSize(document.getElementById('restartButton'));
   adjustSize(document.getElementById('quitButton'));
@@ -132,19 +143,18 @@ document.getElementById('startButton').addEventListener('click', () => {
 });
 var isBlurred = false;
 window.addEventListener('blur', () => {
-  isBlurred = true;
-  pauseRound();
+  if (document.getElementById('optionsMask').classList.contains('hide')) {
+    blurFreeze();
+  }
 });
 
 window.addEventListener('focus', () => {
-  isBlurred = false;
-  if (!isBlurred && !isPaused && document.getElementById('optionsMask').classList.contains('hide')) {
+  if (!isPaused && document.getElementById('optionsMask').classList.contains('hide')) {
     resumeRound();
   }
 });
 var isPaused = true;
 document.getElementById('pauseButton').addEventListener('click', () => {
-  isPaused = true;
   pauseRound();
   ShowPauseManu();
 });
@@ -158,4 +168,4 @@ document.getElementById('restartButton').addEventListener('click', () => {
 document.getElementById('quitButton').addEventListener('click', () => {
   endRound();
 });
-export {isPaused, isBlurred, endRound};
+export {isPaused, isBlurred, endRound, pauseRound, ShowPauseManu};

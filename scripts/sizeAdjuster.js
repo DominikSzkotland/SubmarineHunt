@@ -26,10 +26,6 @@ const detectAndAdjustSize = (element) => {
       const ship = element;
       ship.style.width = Math.floor(2.5 * ship.offsetHeight) + 'px';
       break;
-    case 'pauseButton':
-      const pauseButton = element;
-      pauseButton.style.width = Math.floor(1 * pauseButton.offsetHeight) + 'px';
-      break;
     case 'resumeButton':
       const resumeButton = element;
       resumeButton.style.maxHeight = 'none';
