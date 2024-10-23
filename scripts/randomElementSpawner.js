@@ -15,7 +15,7 @@ const spawnRandomElement = () => {
   const selectedElement = chooseElementToSpawn();
   switch (selectedElement) {
     case 'submarine':
-      moveHorizontally(spawnOffScreen(elementTemplates.submarine), 0.3);
+      moveHorizontally(spawnOffScreen(elementTemplates.submarine), elementTemplates.submarine.speed);
       break;
     default:
       console.error('You are trying to spawn an undefined element!');

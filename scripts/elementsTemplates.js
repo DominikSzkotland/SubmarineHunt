@@ -81,9 +81,17 @@ const removeBomb = (bomb) => {
   }
 };
 
+/*
+  TODO: dodaj do szblonów wartość speed.
+  i ogarnij potem wwszystkie prędkości w kodzie
+
+  później prędkości będą regulowane poziomem trudności 
+  p. 200 jednostek * 0.5 (poziom normalny) lub 200 jednostek * 0.8 (p. trudny)
+*/
+
 const elementTemplates = {
-  submarine: {elementType: 'submarine', styleClass: 'submarine', pointValue: 10},
-  bomb: {elementType: 'bomb', styleClass: 'bomb', pointValue: 0},
+  submarine: {elementType: 'submarine', styleClass: 'submarine', pointValue: 10, speed: 0.3},
+  bomb: {elementType: 'bomb', styleClass: 'bomb', pointValue: 0, speed: 0.7},
 };
 
 export {
