@@ -102,24 +102,44 @@ body {
   z-index: 1;
 }
 
-#leftButton {
-  width: 22%;
-  left: 0;
+#sterringPanel {
+  position: fixed;
+  z-index: 6;
+  height: 72px;
+  width: 100%;
+  top: calc(100% - 75px);
 }
 
-#actionButtonLeft {
-  width: 28%;
-  left: 22%;
+#moveLeftButton {
+  left: 10px;
+  width: 98px;
 }
 
-#actionButtonRight {
-  width: 28%;
+#dropButtonLeft {
+  width: 98px;
+  left: 120px;
+}
+
+#dropButtonLeft > div.mobileSterringButtonsInsideImage,
+#dropButtonRight div.mobileSterringButtonsInsideImage {
+  background-size: 50%, 50%;
+}
+
+#switchItemButton {
+  width: calc(100% - 460px);
   left: 50%;
+  transform: translateX(-50%);
+  min-width: 160px;
 }
 
-#rightButton {
-  width: 22%;
-  left: 78%;
+#dropButtonRight {
+  width: 98px;
+  left: calc(100% - 220px);
+}
+
+#moveRightButton {
+  width: 98px;
+  left: calc(100% - 110px);
 }
 #optionsMask {
   position: fixed;
