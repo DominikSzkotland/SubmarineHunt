@@ -35,6 +35,12 @@ body {
 #pauseButton {
   background-image: url('../../images/night/pause.png');
 }
+.isFullscreen {
+  background-image: url('../../images/night/minimize.png');
+}
+.isNotFullscreen {
+  background-image: url('../../images/night/maximize.png');
+}
 #resumeButton {
   background-image: url('../../images/night/play.png');
 }
