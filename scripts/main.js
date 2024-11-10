@@ -4,7 +4,7 @@ import {updateClickState, disableAllKeys, enableAllKeys, resetGameKeys} from './
 import isTouchDevice from './touchDeviceDetection.js';
 import {flowingElements, removeAllElements, droppedElements} from './elementsTemplates.js';
 import {resetHearts} from './heartsControl.js';
-import {resetInventory} from './shipInventory.js';
+import {addItemToInventory, resetInventory} from './shipInventory.js';
 import {swapButtonsFunctions, updateTouchState} from './screenTouchHandling.js';
 import * as run from './run.js';
 import * as timer from './timerControl.js';

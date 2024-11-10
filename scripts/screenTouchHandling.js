@@ -3,10 +3,11 @@ import {moveShip, stopMovingShip} from './moveShip.js';
 import performShipAction from './performShipAction.js';
 import {switchToNextItem} from './shipInventory.js';
 
-let buttonForMoveLeft = document.getElementById('leftButton').id;
-let buttonForMoveRight = document.getElementById('rightButton').id;
-let buttonForPerformingAction = document.getElementById('actionButtonLeft').id;
-let buttonForSwitchingToNextItem = document.getElementById('actionButtonRight').id;
+let buttonForMoveLeft = document.getElementById('moveLeftButton').id;
+let buttonForMoveRight = document.getElementById('moveRightButton').id;
+let buttonForPerformingAction = document.getElementById('dropButtonLeft').id;
+let buttonForPerformingAction2 = document.getElementById('dropButtonRight').id;
+let buttonForSwitchingToNextItem = document.getElementById('switchItemButton').id;
 
 const changeButtonForMoveLeft = (newButtonid) => {
   buttonForMoveLeft = newButtonid;
@@ -32,19 +33,23 @@ const swapButtonsFunctions = (button1, button2) => {
   let button1Function;
   let neededChangeFunction1;
   switch (button1) {
-    case 'leftButton':
+    case 'moveLeftButton':
       button1Function = buttonForMoveLeft;
       neededChangeFunction1 = changeButtonForMoveLeft;
       break;
-    case 'rightButton':
+    case 'moveRightButton':
       button1Function = buttonForMoveRight;
       neededChangeFunction1 = changeButtonForMoveRight;
       break;
-    case 'actionButtonLeft':
+    case 'dropButtonLeft':
       button1Function = buttonForPerformingAction;
       neededChangeFunction1 = changeButtonForPerformingAction;
       break;
-    case 'actionButtonRight':
+    case 'dropButtonRight':
+      button1Function = buttonForPerformingAction2;
+      neededChangeFunction1 = changeButtonForPerformingAction;
+      break;
+    case 'switchItemButton':
       button1Function = buttonForSwitchingToNextItem;
       neededChangeFunction1 = changeButtonForSwitchingToNextItem;
       break;
@@ -53,19 +58,23 @@ const swapButtonsFunctions = (button1, button2) => {
   let button2Function;
   let neededChangeFunction2;
   switch (button2) {
-    case 'leftButton':
+    case 'moveLeftButton':
       button2Function = buttonForMoveLeft;
       neededChangeFunction2 = changeButtonForMoveLeft;
       break;
-    case 'rightButton':
+    case 'moveRightButton':
       button2Function = buttonForMoveRight;
       neededChangeFunction2 = changeButtonForMoveRight;
       break;
-    case 'actionButtonLeft':
+    case 'dropButtonLeft':
       button2Function = buttonForPerformingAction;
       neededChangeFunction2 = changeButtonForPerformingAction;
       break;
-    case 'actionButtonRight':
+    case 'dropButtonRight':
+      button2Function = buttonForPerformingAction2;
+      neededChangeFunction2 = changeButtonForPerformingAction;
+      break;
+    case 'switchItemButton':
       button2Function = buttonForSwitchingToNextItem;
       neededChangeFunction2 = changeButtonForSwitchingToNextItem;
       break;
@@ -80,6 +89,7 @@ const updateButtonBindings = () => {
     [buttonForMoveLeft]: {pressed: false, disabled: false},
     [buttonForMoveRight]: {pressed: false, disabled: false},
     [buttonForPerformingAction]: {pressed: false, disabled: false},
+    [buttonForPerformingAction2]: {pressed: false, disabled: false},
     [buttonForSwitchingToNextItem]: {pressed: false, disabled: false},
   };
 
@@ -87,6 +97,7 @@ const updateButtonBindings = () => {
     [buttonForMoveLeft]: {press: () => moveShip('left', 0.45), release: () => stopMovingShip('left')},
     [buttonForMoveRight]: {press: () => moveShip('right', 0.45), release: () => stopMovingShip('right')},
     [buttonForPerformingAction]: {press: () => performShipAction(), release: () => {}},
+    [buttonForPerformingAction2]: {press: () => performShipAction(), release: () => {}},
     [buttonForSwitchingToNextItem]: {press: () => switchToNextItem(), release: () => {}},
   };
 };

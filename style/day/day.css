@@ -47,3 +47,22 @@ body {
 #gameStateBar {
   color: var(--logoBlue);
 }
+.mobileSterringButtons {
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.45);
+}
+#dropButtonLeft > div.mobileSterringButtonsInsideImage,
+#dropButtonRight > div.mobileSterringButtonsInsideImage {
+  background-image: url('../../images/day/aim.svg');
+  opacity: 0.7;
+}
+#sterringPanel {
+  color: rgba(0, 0, 0, 0.6);
+}
+#moveLeftButton:active,
+#moveRightButton:active,
+#switchItemButton:active,
+#dropButtonLeft:active,
+#dropButtonRight:active {
+  background-color: rgba(0, 0, 0, 0.2);
+}
