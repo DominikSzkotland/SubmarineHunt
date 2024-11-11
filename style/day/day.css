@@ -35,10 +35,10 @@ body {
 #pauseButton {
   background-image: url('../../images/day/pause.png');
 }
-.isfullscreen {
+.isFullscreen {
   background-image: url('../../images/day/minimize.png');
 }
-.isNotfullscreen {
+.isNotFullscreen {
   background-image: url('../../images/day/maximize.png');
 }
 #resumeButton {
