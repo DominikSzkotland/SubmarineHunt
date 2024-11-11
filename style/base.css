@@ -189,7 +189,17 @@ body {
   background-size: 100% 100%;
   z-index: 6;
 }
-
+#fullscreenButton {
+  position: fixed;
+  left: 0;
+  top: 0;
+  margin-left: 1%;
+  margin-top: 1%;
+  height: 125px;
+  width: 125px;
+  background-size: 100% 100%;
+  z-index: 7;
+}
 #pauseButton {
   position: fixed;
   right: 0;
@@ -202,25 +212,29 @@ body {
   z-index: 7;
 }
 @media screen and (max-height: 770px) {
-  #pauseButton {
+  #pauseButton,
+  #fullscreenButton {
     width: 110px;
     height: 110px;
   }
 }
 @media screen and (max-height: 700px) {
-  #pauseButton {
+  #pauseButton,
+  #fullscreenButton {
     width: 100px;
     height: 100px;
   }
 }
 @media screen and (max-height: 620px) {
-  #pauseButton {
+  #pauseButton,
+  #fullscreenButton {
     width: 90px;
     height: 90px;
   }
 }
 @media screen and (max-height: 550px) {
-  #pauseButton {
+  #pauseButton,
+  #fullscreenButton {
     width: 75px;
     height: 75px;
   }

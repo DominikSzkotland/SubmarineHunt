@@ -11,6 +11,7 @@ import * as timer from './timerControl.js';
 import {spawnRandomElement} from './randomElementSpawner.js';
 import * as points from './pointsControl.js';
 import * as windowRatio from './windowRatioChecker.js';
+import * as fullscreen from './fullscreenHandling.js';
 
 const startRound = () => {
   isPaused = false;
@@ -66,6 +67,7 @@ const resumeRound = () => {
 const showOptions = () => {
   document.getElementById('optionsMask').classList.remove('hide');
   document.getElementById('optionsMask').classList.add('blurred');
+  document.getElementById('startButton').disabled = false;
 };
 const hideOptions = () => {
   document.getElementById('optionsMask').classList.remove('blurred');
@@ -127,6 +129,13 @@ const Play = () => {
   points.addHtmlOutput(document.getElementById('scoreValue'));
   document.getElementById('pauseMask').classList.add('hide');
 };
+fullscreen.matchFullscreenIconsToState();
+document.addEventListener('fullscreenchange', () => {
+  fullscreen.matchFullscreenIconsToState();
+});
+document.getElementById('fullscreenButton').addEventListener('click', () => {
+  fullscreen.toggle();
+});
 document.getElementById('playBox').addEventListener('click', Play);
 window.addEventListener('resize', () => {
   windowRatio.check();
@@ -139,6 +148,7 @@ window.addEventListener('resize', () => {
 });
 document.getElementById('startButton').addEventListener('click', () => {
   document.getElementById('optionsMask').classList.add('hide');
+  document.getElementById('startButton').disabled = true;
   startRound();
 });
 var isBlurred = false;
