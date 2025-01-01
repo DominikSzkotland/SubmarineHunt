@@ -12,7 +12,7 @@ function setNightTheme() {
 
 const autoSwitchTheme = () => {
   const hour = new Date().getHours();
-  if (hour >= 7 && hour < 19) {
+  if (hour >= 7 && hour < 18) {
     setDayTheme();
   } else {
     setNightTheme();
